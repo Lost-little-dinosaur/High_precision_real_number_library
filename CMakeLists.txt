@@ -3,4 +3,4 @@ project(High_precision_real_number_library C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(High_precision_real_number_library main.c Model/struct.h Compute/multiplication.h)
+add_executable(High_precision_real_number_library main.c)
