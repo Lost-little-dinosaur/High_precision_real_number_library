@@ -5,15 +5,15 @@
 #ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_PLUSUNSIGNDBIGNUM_H
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_PLUSUNSIGNDBIGNUM_H
 
-char *plusUnsigndBigNum(UnsigndBignNum x[],UnsigndBignNum y[]) {
+char *plusUnsigndBigNum(char x[],char y[]) {
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
-    int len1 = x->length, len2 = y->length, len3 = len1 > len2 ? len1 : len2;
+    int len1 = strlen(x), len2 = strlen(y), len3 = len1 > len2 ? len1 : len2;
     int i, j, k, m, n, flag = 0;
     for (i = len1 - 1, k = 0; i >= 0, k < len1; i--, k++) {
-        a[k] = x->numBody[i] - '0';
+        a[k] = x[i] - '0';
     }
     for (j = len2 - 1, m = 0; j >= 0, m < len2; j--, m++) {
-        b[m] = y->numBody[j] - '0';
+        b[m] = y[i] - '0';
     }
     /*for (int i = 0; i < len1; ++i) {
         printf("%d", a[i]);
