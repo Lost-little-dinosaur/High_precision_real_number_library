@@ -23,15 +23,13 @@ char *plusUnsigndBigNum(UnsigndBignNum x[],UnsigndBignNum y[]) {
         printf("%d", b[j]);
     }
     printf("\n");*/
-    if(len1<len2)
-    {
+    if (len1 < len2) {
         for (int i = len1; i < len2; ++i) {
-            a[i]=0;
+            a[i] = 0;
         }
-    }
-    else{
+    } else {
         for (int i = len2; i < len1; ++i) {
-            b[i]=0;
+            b[i] = 0;
         }
     }
     /*for (int i = 0; i < len3; ++i) {
@@ -52,11 +50,11 @@ char *plusUnsigndBigNum(UnsigndBignNum x[],UnsigndBignNum y[]) {
     if (result[n] == 0) {
         n = n - 1;
     }
-    int i1,n2;
+    int i1, n2;
     char r[1005];
-    n2=n;
-    for (i1=0 ; n >= 0,i1<=n2; n--,i1++) {
-        r[i1]=result[n]+'0';
+    n2 = n;
+    for (i1 = 0; n >= 0, i1 <= n2; n--, i1++) {
+        r[i1] = result[n] + '0';
         //printf("%d", r[i1]);
     }
     return r;
