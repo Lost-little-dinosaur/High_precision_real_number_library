@@ -1,0 +1,3 @@
+C:/Users/DELL/Desktop/C语言/High_precision_real_number_library/cmake-build-debug/CMakeFiles/High_precision_real_number_library.dir
+C:/Users/DELL/Desktop/C语言/High_precision_real_number_library/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/DELL/Desktop/C语言/High_precision_real_number_library/cmake-build-debug/CMakeFiles/rebuild_cache.dir
