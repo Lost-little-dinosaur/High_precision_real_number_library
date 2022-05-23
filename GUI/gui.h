@@ -4,8 +4,9 @@
 
 #ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_GUI_H
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_GUI_H
-
+//woshishikan
 //这地方就写你的图形化界面的函数就好了
 //接下来看看咋push
+//我再该一次
 
 #endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_GUI_H
