@@ -18,7 +18,7 @@ char  *sepBigNumIn (char *x) {//输入带符号的实数 输出整数部分
     j = i;
     for (i = 1, k = 0; i < j, k < j - 1; ++i, ++k) {
         FBN.intager[k] = x[i];
-        printf("%c", FBN.intager[k]);
+        //printf("%c", FBN.intager[k]);
     }
     return FBN.intager;
 }
