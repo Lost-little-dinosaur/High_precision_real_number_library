@@ -4,16 +4,25 @@
 
 #ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_PLUSUNSIGNDBIGNUM_H
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_PLUSUNSIGNDBIGNUM_H
+#define MAXSIZE 500
+#include <string.h>
+struct UnsigndBignNum {//无符号大整数
+    int length;//表示数据的位数
+    char numBody[MAXSIZE];//表示数据主体
+};
 
-char *plusUnsigndBigNum(char x[], char y[]) {
+struct UnsigndBignNum plusUnsigndBigNum( struct UnsigndBignNum x, struct UnsigndBignNum y) {
+
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
-    int len1 = strlen(x), len2 = strlen(y), len3 = len1 > len2 ? len1 : len2;
+    struct UnsigndBignNum r;
+    int len1 = x.length, len2 = y.length, len3 = len1 > len2 ? len1 : len2;
     int i, j, k, m, n, flag = 0;
-    for (i = len1 - 1, k = 0; i >= 0, k < len1; i--, k++) {
-        a[k] = x[i] - '0';
+    for (i = len1 - 1, k = 0; i >= 0, k < len1; i--, k++)
+    {
+        a[k] = x.numBody[i] - '0';
     }
     for (j = len2 - 1, m = 0; j >= 0, m < len2; j--, m++) {
-        b[m] = y[i] - '0';
+        b[m] = y.numBody[i] - '0';
     }
     /*for (int i = 0; i < len1; ++i) {
         printf("%d", a[i]);
@@ -51,10 +60,9 @@ char *plusUnsigndBigNum(char x[], char y[]) {
         n = n - 1;
     }
     int i1, n2;
-    char r[1005];
     n2 = n;
     for (i1 = 0; n >= 0, i1 <= n2; n--, i1++) {
-        r[i1] = result[n] + '0';
+        r.numBody[i1] = result[n] + '0';
         //printf("%d", r[i1]);
     }
     return r;
