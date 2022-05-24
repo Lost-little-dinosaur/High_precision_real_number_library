@@ -8,6 +8,7 @@
 #endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_BIJIAO_H
 #include<stdio.h>
 #include<string.h>
+#include "../Model/struct.h"
 int main()
 {
     char Num1[10000];
