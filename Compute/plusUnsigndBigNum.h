@@ -5,7 +5,7 @@
 #ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_PLUSUNSIGNDBIGNUM_H
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_PLUSUNSIGNDBIGNUM_H
 
-char *plusUnsigndBigNum(char x[],char y[]) {
+char *plusUnsigndBigNum(char x[], char y[]) {
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
     int len1 = strlen(x), len2 = strlen(y), len3 = len1 > len2 ? len1 : len2;
     int i, j, k, m, n, flag = 0;

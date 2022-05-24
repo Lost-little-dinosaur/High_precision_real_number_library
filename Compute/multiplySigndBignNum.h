@@ -1,13 +1,14 @@
 //
 // Created by Dinosaur on 2022/5/23.
 //
-#include "../Model/struct.h"
+#include "plusUnsigndBigNum.h"
 #include "string.h"
+#include "../Model/struct.h"
 
 #ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLICATION_H
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLICATION_H
 
-struct UnsigndBignNum multiplyUnsigndBignNum(struct UnsigndBignNum a, struct UnsigndBignNum b)//无符号大数乘法
+struct SigndBigNum multiplySigndBignNum(struct SigndBigNum a, struct SigndBigNum b)//无符号大数乘法
 {
     if (a.flag == 0)//如果a为0
     {
@@ -22,16 +23,16 @@ struct UnsigndBignNum multiplyUnsigndBignNum(struct UnsigndBignNum a, struct Uns
 
     //初始化变量
     //用于返回的结构体
-    struct UnsigndBignNum retuenTemp;
+    struct SigndBigNum retuenTemp;
     //用于临时记录每一次单位乘法的结果
-    struct UnsigndBignNum eachTemp;
+    struct SigndBigNum eachTemp;
     //临时变量长度初始化为0
     eachTemp.length = 0;
     //用于进位的临时变量
     int tempJinwei;
     //判断出哪个变量更长
-    struct UnsigndBignNum maxNum;
-    struct UnsigndBignNum minNum;
+    struct SigndBigNum maxNum;
+    struct SigndBigNum minNum;
     if (b.length > a.length)//如果b的长度大于a
     {
         //就把b的值复制给maxNum
@@ -64,7 +65,7 @@ struct UnsigndBignNum multiplyUnsigndBignNum(struct UnsigndBignNum a, struct Uns
 
         for (int j = minNum.length; j < minNum.length + maxNum.length; ++j) //开始遍历a，进行单次乘法的细致步骤
         {
-            eachTemp.numBody[i] = tempJinwei + (a.numBody[j] - '0') * (b.numBody[i] - '0') % 10;
+            eachTemp.numBody[i] = (tempJinwei + '0') + (a.numBody[j] - '0') * (b.numBody[i] - '0') % 10 + '0';
             tempJinwei = (a.numBody[j] - '0') * (b.numBody[i] - '0') / 10;
         }
 
@@ -73,8 +74,32 @@ struct UnsigndBignNum multiplyUnsigndBignNum(struct UnsigndBignNum a, struct Uns
         {
             eachTemp.numBody[minNum.length + maxNum.length] = tempJinwei;
         }
+        //还要再将0加入到临时变量中
+        for (int j = 0; j < i; ++j) //
+        {
+            eachTemp.numBody[j] = '0';
+        }
         //将临时变量加入总变量
+        strcpy(retuenTemp.numBody, plusUnsigndBigNum(eachTemp.numBody, retuenTemp.numBody));
     }
+
+    //判断返回结构体的符号
+    retuenTemp.flag = -1;
+    for (int i = 0; i < retuenTemp.length; ++i)//
+    {
+        if (retuenTemp.numBody[i] != 0)//一旦有一个不是0
+        {
+            //flag变量置为1
+            retuenTemp.flag = 1;
+            break;
+        }
+    }
+    if (retuenTemp.flag == -1)  //如果flag还是-1
+    {
+        retuenTemp.flag = 0;
+    }
+
+    return retuenTemp;
 }
 
 #endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLICATION_H

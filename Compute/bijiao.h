@@ -6,19 +6,20 @@
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_BIJIAO_H
 
 #endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_BIJIAO_H
+
 #include<stdio.h>
 #include<string.h>
-int main()
-{
+
+int main() {
     char Num1[10000];
     char Num2[10000];
 
-    scanf("%s %s",Num1,Num2);
+    scanf("%s %s", Num1, Num2);
     /* check1(Num1);
       check2(Num2);*/
-    int length1=scanf(Num1);
-    int length2=scanf(Num2);
-    calculate(Num1,Num2);
+    int length1 = Scanf(Num1);
+    int length2 = Scanf(Num2);
+    calculate(Num1, Num2);
     return 0;
 }
 
@@ -45,74 +46,72 @@ void check2(char num2[]){
 
 }
 */
-int Scanf (char num[])
-{
-    int len=strlen(num);
+int Scanf(char num[]) {
+    int len = strlen(num);
     int i;
-    for(i=0; i<len; i++)
-        if(num[i]=='.')
+    for (i = 0; i < len; i++)
+        if (num[i] == '.')
             break;
     return i;
 }
-void calculate(char num1[],char num2[])
-{
-    int length1=Scanf(num1);
-    int length2=Scanf(num2);
-    if(length1>length2){
-        printf("第一个数大于第二个数\n");}
-    else if(length1<length2){
-        printf("第二个数大于第一个数\n");}
-    else if(length1=length2){
-        zhuwei(num1,num2,length1);
+
+void calculate(char num1[], char num2[]) {
+    int length1 = Scanf(num1);
+    int length2 = Scanf(num2);
+    if (length1 > length2) {
+        printf("第一个数大于第二个数\n");
+    } else if (length1 < length2) {
+        printf("第二个数大于第一个数\n");
+    } else if (length1 = length2) {
+        zhuwei(num1, num2, length1);
     }
 }
 
 
-int zhuwei(char num1[],char num2[],int length)
-{
-    int i,j;
-    for(i=0; i<length; i++)
-    {
-        if(num1[i]!=num2[i])
+int zhuwei(char num1[], char num2[], int length) {
+    int i, j;
+    for (i = 0; i < length; i++) {
+        if (num1[i] != num2[i])
             break;
     }
-    int sum=num1[i]-num2[i];
-    if(sum>0){
+    int sum = num1[i] - num2[i];
+    if (sum > 0) {
         printf("第一个数大于第二个数\n");
-    }
-    else if(sum<0){
+    } else if (sum < 0) {
         printf("第二个数大于第一个数\n");
-    }
-    else if(sum=0){
+    } else if (sum = 0) {
         printf("两数相等\n");
     }
 }
+
 #include<stdio.h>
 #include<string.h>
+
 int gps(char num[])//找到小数点所在的位置
 {
-    int len=strlen(num);
+    int len = strlen(num);
     int i;
-    for(i=0; i<len; i++)
-        if(num[i]=='.')
+    for (i = 0; i < len; i++)
+        if (num[i] == '.')
             break;
     return i;
 }
-int cmp1(char num1[],char num2[])//比较小数点的大小
+
+int cmp1(char num1[], char num2[])//比较小数点的大小
 {
-    int len=gps(num1);
-    return strcmp(num1+len,num2+len);
+    int len = gps(num1);
+    return strcmp(num1 + len, num2 + len);
 }
-int cmp(char num1[],char num2[],int len)//比较大数的大小
+
+int cmp(char num1[], char num2[], int len)//比较大数的大小
 {
     int i;
-    for(i=0; i<len; i++)
-    {
-        if(num1[i]!=num2[i])
+    for (i = 0; i < len; i++) {
+        if (num1[i] != num2[i])
             break;
     }
-    int sum=num1[i]-num2[i];
-    if(i!=len)
+    int sum = num1[i] - num2[i];
+    if (i != len)
         return sum;
     return 0;
 }
