@@ -9,6 +9,7 @@
 struct UnsigndBignNum {//无符号大整数
     int length;//表示数据的位数
     char numBody[MAXSIZE];//表示数据主体
+    int flag;//0表示0，可以不做任何操作，1表示正数
 };
 
 struct SigndBigNum {//有符号大整数
