@@ -12,6 +12,7 @@ struct UnsigndBignNum {//无符号大整数
 };
 
 struct UnsigndBignNum plusUnsigndBigNum( struct UnsigndBignNum x, struct UnsigndBignNum y) {
+
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
     struct UnsigndBignNum r;
     int len1 = x.length, len2 = y.length, len3 = len1 > len2 ? len1 : len2;
