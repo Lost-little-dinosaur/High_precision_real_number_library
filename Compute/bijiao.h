@@ -16,8 +16,8 @@ int main()
     scanf("%s %s",Num1,Num2);
     /* check1(Num1);
       check2(Num2);*/
-    int length1=Scanf(Num1);
-    int length2=Scanf(Num2);
+    int length1=scanf(Num1);
+    int length2=scanf(Num2);
     calculate(Num1,Num2);
     return 0;
 }
