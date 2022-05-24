@@ -5,8 +5,8 @@
 #include "string.h"
 #include "plusUnsigndBigNum.h"
 
-#ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLICATION_H
-#define HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLICATION_H
+#ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
+#define HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
 
 struct UnsigndBignNum multiplyUnsigndBignNum(struct UnsigndBignNum a, struct UnsigndBignNum b)//无符号大数乘法
 {
@@ -101,4 +101,4 @@ struct UnsigndBignNum multiplyUnsigndBignNum(struct UnsigndBignNum a, struct Uns
     return retuenTemp;
 }
 
-#endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLICATION_H
+#endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
