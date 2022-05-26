@@ -12,6 +12,7 @@ struct UnsigndBignNum {//无符号大整数
 };
 
 struct UnsigndBignNum plusUnsigndBigNum( struct UnsigndBignNum x, struct UnsigndBignNum y) {
+
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
     struct UnsigndBignNum r;
     memset(r.numBody,0,sizeof (r.numBody));
