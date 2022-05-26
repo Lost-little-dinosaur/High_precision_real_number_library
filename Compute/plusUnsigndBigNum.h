@@ -15,6 +15,7 @@ struct UnsigndBignNum plusUnsigndBigNum( struct UnsigndBignNum x, struct Unsignd
 
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
     struct UnsigndBignNum r;
+    memset(r.numBody,0,sizeof (r.numBody));
     int len1 = x.length, len2 = y.length, len3 = len1 > len2 ? len1 : len2;
     int i, j, k, m, n, flag = 0;
     for (i = len1 - 1, k = 0; i >= 0, k < len1; i--, k++)
@@ -22,7 +23,7 @@ struct UnsigndBignNum plusUnsigndBigNum( struct UnsigndBignNum x, struct Unsignd
         a[k] = x.numBody[i] - '0';
     }
     for (j = len2 - 1, m = 0; j >= 0, m < len2; j--, m++) {
-        b[m] = y.numBody[i] - '0';
+        b[m] = y.numBody[j] - '0';
     }
     /*for (int i = 0; i < len1; ++i) {
         printf("%d", a[i]);
