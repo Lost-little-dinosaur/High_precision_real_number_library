@@ -8,7 +8,7 @@
 #ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
 
-struct UnsigndBignNum multiplyUnsigndBignNum(struct UnsigndBignNum a, struct UnsigndBignNum b)//无符号大数乘法
+struct UnsignedBigNum multiplyUnsigndBigNum(struct UnsignedBigNum a, struct UnsignedBigNum b)//无符号大数乘法
 {
     if (a.flag == 0)//如果a为0
     {
@@ -23,16 +23,52 @@ struct UnsigndBignNum multiplyUnsigndBignNum(struct UnsigndBignNum a, struct Uns
 
     //初始化变量
     //用于返回的结构体
-    struct UnsigndBignNum retuenTemp;
+    struct UnsignedBigNum retuenTemp;
     //用于临时记录每一次单位乘法的结果
-    struct UnsigndBignNum eachTemp;
+    struct UnsignedBigNum eachTemp;
     //临时变量长度初始化为0
     eachTemp.length = 0;
     //用于进位的临时变量
     int tempJinwei;
     //判断出哪个变量更长
-    struct UnsigndBignNum maxNum;
-    struct UnsigndBignNum minNum;
+    struct UnsignedBigNum maxNum;
+    struct UnsignedBigNum minNum;
+
+    //翻转字符串
+    int len = 0;
+    char* p = a.numBody;
+    while (*p != 0)//
+    {
+        len++;
+        p++;
+    }
+    // 交换 ...
+    int ii = 0;
+    char c;
+    while (ii <= len / 2 - 1)//
+    {
+        c = *(a.numBody + ii);
+        *(a.numBody + ii) = *(a.numBody + len - 1 - ii);
+        *(a.numBody + len - 1 - ii) = c;
+        ii++;
+    }
+    len = 0;
+     p = b.numBody;
+    while (*p != 0)//
+    {
+        len++;
+        p++;
+    }
+    // 交换 ...
+    ii = 0;
+    while (ii <= len / 2 - 1)//
+    {
+        c = *(b.numBody + ii);
+        *(b.numBody + ii) = *(b.numBody + len - 1 - ii);
+        *(b.numBody + len - 1 - ii) = c;
+        ii++;
+    }
+
     if (b.length > a.length)//如果b的长度大于a
     {
         //就把b的值复制给maxNum

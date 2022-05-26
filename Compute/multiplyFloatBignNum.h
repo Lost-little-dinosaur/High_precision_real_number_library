@@ -1,14 +1,14 @@
 //
 // Created by Dinosaur on 2022/5/23.
 //
-#include "plusUnsigndBigNum.h"
+#include "plu"
 #include "string.h"
 #include "../Model/struct.h"
 
 #ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYSIGNBIGNUM
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYSIGNBIGNUM
 
-struct SigndBigNum multiplySigndBignNum(struct SigndBigNum a, struct SigndBigNum b)//无符号大数乘法
+struct SignedBigNum multiplySigndBignNum(struct SignedBigNum a, struct SignedBigNum b)//无符号大数乘法
 {
     if (a.flag == 0)//如果a为0
     {
@@ -23,16 +23,16 @@ struct SigndBigNum multiplySigndBignNum(struct SigndBigNum a, struct SigndBigNum
 
     //初始化变量
     //用于返回的结构体
-    struct SigndBigNum retuenTemp;
+    struct SignedBigNum retuenTemp;
     //用于临时记录每一次单位乘法的结果
-    struct SigndBigNum eachTemp;
+    struct SignedBigNum eachTemp;
     //临时变量长度初始化为0
     eachTemp.length = 0;
     //用于进位的临时变量
     int tempJinwei;
     //判断出哪个变量更长
-    struct SigndBigNum maxNum;
-    struct SigndBigNum minNum;
+    struct SignedBigNum maxNum;
+    struct SignedBigNum minNum;
     if (b.length > a.length)//如果b的长度大于a
     {
         //就把b的值复制给maxNum
@@ -80,7 +80,7 @@ struct SigndBigNum multiplySigndBignNum(struct SigndBigNum a, struct SigndBigNum
             eachTemp.numBody[j] = '0';
         }
         //将临时变量加入总变量
-        strcpy(retuenTemp.numBody, plusUnsigndBigNum(eachTemp.numBody, retuenTemp.numBody));
+        strcpy(retuenTemp.numBody, plusSigndBigNum(eachTemp, retuenTemp));
     }
 
     //判断返回结构体的符号
