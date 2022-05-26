@@ -8,12 +8,9 @@
 #include <string.h>
 #include <stdlib.h>
 #define MAXSIZE 500
+#include "..\Model\struct.h"
 
-struct UnsigndBignNum {//无符号大整数
-    int length;//表示数据的位数
-    char numBody[MAXSIZE];//表示数据主体
-};
-int cmpUnsigndBigNum(struct UnsigndBignNum x, struct UnsigndBignNum y){
+int cmpUnsignedBigNum(struct UnsignedBigNum x, struct UnsignedBigNum y){
     int flag;
     if(x.length>y.length)
         flag= 1;
@@ -28,14 +25,14 @@ int cmpUnsigndBigNum(struct UnsigndBignNum x, struct UnsigndBignNum y){
 
     return flag;
 }
-struct UnsigndBignNum subUnsigndBigNum (struct UnsigndBignNum x, struct UnsigndBignNum y) {
+struct UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct UnsignedBigNum y) {
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
-    struct UnsigndBignNum r;
+    struct UnsignedBigNum r;
     memset(r.numBody, 0, sizeof(r.numBody));
     int len1 = x.length, len2 = y.length, len3 = len1 > len2 ? len1 : len2;
     //printf("%d %d\n",len1,len2);
     int i, j, k, m, n, flag = 0, sign;
-    sign = cmpUnsigndBigNum(x, y);
+    sign = cmpUnsignedBigNum(x, y);
     //printf("sign=%d\n", sign);
 
     for (i = len1 - 1, k = 0; i >= 0, k < len1; i--, k++) {

@@ -1,10 +1,16 @@
+#include<stdio.h>
+#include<string.h>
 //
-// Created by DELL on 2022/5/23.
+// Created by Dinosaur on 2022/5/23.
 //
+//#include "../Model/struct.h"
+#include "string.h"
+//#include "plusUnsigndBigNum.h"
 
-#ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_BIJIAO_H
-#define HIGH_PRECISION_REAL_NUMBER_LIBRARY_BIJIAO_H
+#ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
+#define HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
 
+=======
 #endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_BIJIAO_H
 
 #include<stdio.h>
@@ -43,7 +49,54 @@ void check2(char num2[]){
          len=strlen(num2);}
     }
 
+#endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_STRUCT_H
 
+struct SigndBigNum totalcompare( SigndBigNum x,SigndBigNum y){
+    if(x.flag>y.flag){
+        return x;
+    }
+    else if(x.flag<y.flag){
+        return y;
+    }
+    else{
+        calculate(x,y);
+    }
+
+    int main() {
+        char a[1005],b[1005];
+        SigndBigNum x,y,r;
+        UnsigndBignNum c,d;
+        scanf("%s",&a);
+        scanf("%s",&b);
+        x.flag= judgeSigndBigNum(a);
+        y.flag= judgeSigndBigNum(b);
+
+        //printf("flag=%d %d\n",x.flag,y.flag);
+
+        x.length= strlen(a)-1;
+        y.length= strlen(b)-1;
+        c=removeSigndBigNumFlag(a);
+        d= removeSigndBigNumFlag(b);
+        strcpy(x.numBody,c.numBody);
+        strcpy(y.numBody,d.numBody);
+
+        /* printf("%s ",x.numBody);
+         printf("%s \n",y.numBody);*/
+
+
+    }
+
+    int Scanf (char num[])
+    {
+        int len=strlen(num);
+        int i;
+        for(i=0; i<len; i++)
+            if(num[i]=='.')
+                break;
+        return i;
+    }
+    char calculate(SigndBigNum x,SigndBigNum y/*char num1[],char num2[]*/)
+=======
 }
 */
 int Scanf(char num[]) {
@@ -120,23 +173,3 @@ int cmp(char num1[], char num2[], int len)//比较大数的大小
     char num1[10000];
     char num2[10000];
     while(scanf("%s %s",num1,num2)!=EOF)
-    {
-        int len1=gps(num1);
-        int len2=gps(num2);
-        if(len1>len2)
-            printf("1\n");
-        else if(len1<len2)
-            printf("-1\n");
-        else if(cmp(num1,num2,len1)>0)
-            printf("1\n");
-        else if(cmp(num1,num2,len2)<0)
-            printf("-1\n");
-        else if(cmp1(num1,num2)>0)
-            printf("1\n");
-        else if(cmp1(num1,num2)<0)
-            printf("-1\n");
-        else
-            printf("0\n");
-    }
-}
-*/
