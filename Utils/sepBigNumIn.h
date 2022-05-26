@@ -6,14 +6,7 @@
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_SEPBIGNUMIN_H
 #define MAXSIZE 500
 #include <string.h>
-
-struct FloatBigNum {//超高精度实数
-    int lengthIntager;//表示数据的位数
-    int lengthDecimal;//表示数据的位数
-    char intager[MAXSIZE];//整数部分
-    char decimal[MAXSIZE];//小数部分
-    int flag;//表示符号，-1则为负数、1则为正数、0则表示原数为0
-};
+#include "..\Model\struct.h"
 
 char  *sepBigNumIn (char *x) {//输入带符号的实数 输出整数部分
     struct FloatBigNum FBN;
