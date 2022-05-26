@@ -5,8 +5,14 @@
 #include "..\Model\struct.h"
 
 
-UnsigndBigNum DiviseUnsignedBigNum(UnsigndBigNum a,UnsigndBigNum b){
-  UnsigndBigNum c;
+UnsignedBigNum DiviseUnsignedBigNum(UnsignedBigNum a,UnsignedBigNum b){
+  UnsignedBigNum c;
+  if(a.flag == 0){
+    c.flag = 0;
+    strcpy(c.numBody,"0");
+    c.length = 0;
+    return c;
+  }
   strcpy(c.numBody,divise(a.numBody,b.numBody));
   c.length = strlen(c.numBody);
   return c;
