@@ -6,15 +6,12 @@
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_PLUSUNSIGNDBIGNUM_H
 #define MAXSIZE 500
 #include <string.h>
-struct UnsigndBignNum {//无符号大整数
-    int length;//表示数据的位数
-    char numBody[MAXSIZE];//表示数据主体
-};
+#include "..\Model\struct.h"
 
-struct UnsigndBignNum plusUnsigndBigNum( struct UnsigndBignNum x, struct UnsigndBignNum y) {
+struct UnsignedBigNum plusUnsignedBigNum( struct UnsignedBigNum x, struct UnsignedBigNum y) {
 
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
-    struct UnsigndBignNum r;
+    struct UnsignedBigNum r;
     memset(r.numBody,0,sizeof (r.numBody));
     int len1 = x.length, len2 = y.length, len3 = len1 > len2 ? len1 : len2;
     int i, j, k, m, n, flag = 0;
