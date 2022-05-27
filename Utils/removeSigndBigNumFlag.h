@@ -6,9 +6,10 @@
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_REMOVESIGNDBIGNUMFLAG_H
 #define MAXSIZE 500
 #include <string.h>
-#include "..\Model\struct.h"
+#include "../Model/struct.h"
 
-struct UnsignedBigNum removeSignedBigNumFlag(char x[]) {//移除有符号大整数的符号位得到numbody
+
+struct UnsignedBigNum removeSigndBigNumFlag(char x[]) {//移除有符号大整数的符号位得到numbody
     struct UnsignedBigNum SBN;
     SBN.length = strlen(x);
     //printf("%d",SBN.length);

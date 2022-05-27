@@ -7,16 +7,49 @@
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
-    <generated />
+    <generated>
+      <config projectName="High_precision_real_number_library" targetName="High_precision_real_number_library" />
+    </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="976c0c2f-7a71-4d37-b886-c3d10d847057" name="Changes" comment="initiate GUI">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="976c0c2f-7a71-4d37-b886-c3d10d847057" name="Changes" comment="debug multiplication.h">
+      <change afterPath="$PROJECT_DIR$/newCompute/comparison.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newCompute/comparison.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newCompute/division.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newCompute/division.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newCompute/multiplication.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newCompute/multiplication.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newCompute/plus.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newCompute/plus.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newCompute/subtraction.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newCompute/subtraction.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/DiviseSignedBigNum_test.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/DiviseUnsignedBigNum_test.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/Modsignedbignum_test.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/basicdivise.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/basicdivise_test.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/bijiao.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/divisesignedbignum.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/diviseunsignedbignum.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/modsignedbignum.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/modunsignedbignum.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/modunsignedbignum_test.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/multiplyFloatBignNum.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/multiplySigndBignNum.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/multiplyUnsigndBignNum.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/plusSigndBigNum.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/plusUnsigndBigNum.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/subSignedBigNum.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/subUnsigndBigNum.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
@@ -28,10 +61,11 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dinosaur" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,6 +95,8 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cmake.loaded.for.project&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/document/learning_materials/chengxushejishijian/src/High_precision_real_number_library/Compute&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -69,6 +105,14 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\document\learning_materials\chengxushejishijian\src\High_precision_real_number_library\Compute" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\document\learning_materials\chengxushejishijian\src\High_precision_real_number_library\Compute" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
@@ -92,7 +136,17 @@
       <workItem from="1652789957330" duration="4751000" />
       <workItem from="1653281191762" duration="1358000" />
       <workItem from="1653282573012" duration="2489000" />
-      <workItem from="1653373220944" duration="1076000" />
+      <workItem from="1653315737882" duration="38000" />
+      <workItem from="1653315940099" duration="2460000" />
+      <workItem from="1653319011041" duration="2351000" />
+      <workItem from="1653352223044" duration="12000" />
+      <workItem from="1653352260914" duration="4129000" />
+      <workItem from="1653368741795" duration="3830000" />
+      <workItem from="1653373926043" duration="2020000" />
+      <workItem from="1653542989901" duration="5598000" />
+      <workItem from="1653565575412" duration="1677000" />
+      <workItem from="1653568127202" duration="3000" />
+      <workItem from="1653611713135" duration="1295000" />
     </task>
     <task id="LOCAL-00001" summary="initiate GUI">
       <created>1652790141392</created>
@@ -143,7 +197,35 @@
       <option name="project" value="LOCAL" />
       <updated>1653282611146</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="write multiplication.h">
+      <created>1653353767046</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1653353767046</updated>
+    </task>
+    <task id="LOCAL-00009" summary="write multiplication.h">
+      <created>1653356405517</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1653356405517</updated>
+    </task>
+    <task id="LOCAL-00010" summary="write multiplication.h">
+      <created>1653370309071</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1653370309071</updated>
+    </task>
+    <task id="LOCAL-00011" summary="debug multiplication.h">
+      <created>1653544335179</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1653544335179</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +244,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initiate GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="initiate GUI" />
+    <MESSAGE value="write multiplication.h" />
+    <MESSAGE value="debug multiplication.h" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug multiplication.h" />
   </component>
 </project>
