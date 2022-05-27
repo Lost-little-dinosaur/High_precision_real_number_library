@@ -9,6 +9,7 @@
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="High_precision_real_number_library" targetName="High_precision_real_number_library" />
+      <config projectName="High_precision_real_number_library" targetName="demo" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -18,7 +19,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="976c0c2f-7a71-4d37-b886-c3d10d847057" name="Changes" comment="refactor project">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newCompute/multiplication.c" beforeDir="false" afterPath="$PROJECT_DIR$/newCompute/multiplication.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newCompute/plus.c" beforeDir="false" afterPath="$PROJECT_DIR$/newCompute/plus.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newCompute/plus.h" beforeDir="false" afterPath="$PROJECT_DIR$/newCompute/plus.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,17 +86,26 @@
       <recent name="E:\document\learning_materials\chengxushejishijian\src\High_precision_real_number_library\Compute" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="CMake 应用程序.High_precision_real_number_library">
     <configuration name="High_precision_real_number_library" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="High_precision_real_number_library" TARGET_NAME="High_precision_real_number_library" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="High_precision_real_number_library" RUN_TARGET_NAME="High_precision_real_number_library">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="demo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="High_precision_real_number_library" TARGET_NAME="demo" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake 应用程序.demo" />
+      <item itemvalue="CMake 应用程序.High_precision_real_number_library" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -113,7 +128,8 @@
       <workItem from="1653542989901" duration="5598000" />
       <workItem from="1653565575412" duration="1677000" />
       <workItem from="1653568127202" duration="3000" />
-      <workItem from="1653611713135" duration="1895000" />
+      <workItem from="1653611713135" duration="3070000" />
+      <workItem from="1653614824150" duration="1073000" />
     </task>
     <task id="LOCAL-00001" summary="initiate GUI">
       <created>1652790141392</created>
@@ -199,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653613045465</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="refactor project">
+      <created>1653613632224</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1653613632224</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,5 +245,16 @@
     <MESSAGE value="debug multiplication.h" />
     <MESSAGE value="refactor project" />
     <option name="LAST_COMMIT_MESSAGE" value="refactor project" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/newCompute/multiplication.c</url>
+          <line>90</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

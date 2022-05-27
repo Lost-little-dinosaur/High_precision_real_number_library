@@ -5,4 +5,6 @@
 #ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_PLUS_H
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_PLUS_H
 
+
+struct UnsignedBigNum plusUnsignedBigNum(struct UnsignedBigNum x, struct UnsignedBigNum y);
 #endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_PLUS_H
