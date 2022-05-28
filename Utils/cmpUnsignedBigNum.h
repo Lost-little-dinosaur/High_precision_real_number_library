@@ -7,7 +7,7 @@
 #include "string.h"
 #define MAXSIZE 500
 #include "..\model\struct.h"
-int cmpUnsignedBigNum(struct UnsignedBigNum x, struct UnsignedBigNum y){
+int cmpUnsignedBigNum(struct UnsignedBigNum x, struct UnsignedBigNum y){//有符号数符号一致时简单比较
     int flag;
     if(x.length>y.length)
         flag= 1;
