@@ -9,6 +9,7 @@
 #include "..\Model\struct.h"
 char  *sepBigNumDe (char *x) {//输入带符号的实数 输出小数部分
     struct FloatBigNum FBN;
+    memset(FBN.decimal,0,sizeof(FBN.decimal));
     int j, k, len;
     int i;
     len = strlen(x);
@@ -17,6 +18,7 @@ char  *sepBigNumDe (char *x) {//输入带符号的实数 输出小数部分
             break;
         }
     }
+    //printf("%d %d",i,len);
     j = i;
     for (i = j + 1, k = 0; i < len, k < len - j; ++i, ++k) {
         FBN.decimal[k] = x[i];
