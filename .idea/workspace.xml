@@ -18,10 +18,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="976c0c2f-7a71-4d37-b886-c3d10d847057" name="Changes" comment="比较">
-      <change afterPath="$PROJECT_DIR$/Compute/ComparesigndBigNum.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Compute/CompareunsignedBigNum.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Compute/bijiao.h" beforeDir="false" afterPath="$PROJECT_DIR$/Compute/bijiao.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/ComparesfloatBigNum.c" beforeDir="false" afterPath="$PROJECT_DIR$/Compute/ComparesfloatBigNum.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +96,7 @@
       <workItem from="1653281191762" duration="1358000" />
       <workItem from="1653282573012" duration="2489000" />
       <workItem from="1653373220944" duration="1076000" />
-      <workItem from="1653746418190" duration="7762000" />
+      <workItem from="1653746418190" duration="9053000" />
     </task>
     <task id="LOCAL-00001" summary="initiate GUI">
       <created>1652790141392</created>
@@ -170,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653821621464</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="比较">
+      <created>1653825806576</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1653825806576</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,7 +201,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Compute/bijiao.h</url>
+          <url>file://$PROJECT_DIR$/Compute/CompareSigndBigNum.c</url>
           <line>31</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>

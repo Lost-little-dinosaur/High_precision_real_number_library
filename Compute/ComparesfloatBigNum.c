@@ -28,18 +28,18 @@ typedef struct FloatBigNum {//超高精度实数
 
 int main(){
     char a[1005],b[1005];
-    struct UnsigndBigNum x,y;
+    struct FloatBigNum x,y;
     scanf("%s",&a);
     scanf("%s",&b);
     x.length= gps(a);
     y.length= gps(b);
-    x.*numBody=a;
-    y.*numBody=b;
-    x.flag= judgeUnsigndBigNum(a);
+    x.numBody=a;
+    y.numBody=b;
+    x.flag= judgeFloatBigNum(a);
     y.flag= judgeUnigndBigNum(b);
 
 }
-struct UnsigndBigNum totalcompare( UnsigndBigNum x, UnsigndBigNum y) {
+struct UnsigndBigNum totalcompare( FloatBigNum x, FloatBigNum y) {
     if (x.flag > y.flag) {
         return x;
     } else if (x.flag < y.flag) {
@@ -57,7 +57,7 @@ struct UnsigndBigNum totalcompare( UnsigndBigNum x, UnsigndBigNum y) {
             break;
     return i;
 }*/
-struct calculate(  UnsigndBigNum x, UnsigndBigNum y) {
+struct calculate(  FloatBigNum x, FloatBigNum y) {
 
 if (x.flag > 0) {
 
@@ -75,7 +75,7 @@ else
 return y;
 
 }
-struct zhuwei( UnsigndBigNum x,  UnsigndBigNum y){
+struct zhuwei( FloatBigNum x,  FloatBigNum y){
 int i,j;
 for(i=0; i<x.length; i++)
 {
