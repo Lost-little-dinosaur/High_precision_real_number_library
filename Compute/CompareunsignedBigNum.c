@@ -1,9 +1,11 @@
 //
 // Created by DELL on 2022/5/29.
 //
+
 #include<stdio.h>
 #include<string.h>
-
+#include"../Utils/removeSigndBigNumFlag.h"
+#include "../Model/struct.h"
 //
 // Created by Dinosaur on 2022/5/23.
 //
@@ -14,35 +16,16 @@
 #ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
 #define MAXSIZE 500
-typedef struct UnsignedBigNum {//无符号大整数
+/*typedef struct UnsignedBigNum {//无符号大整数
     int length;//表示数据的位数
     char numBody[MAXSIZE];//表示数据主体
     int flag;//表示符号，1则为、0则表示原数为0
+}UnsignedBigNum;
+*/
 
 #endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_STRUCT_H
 
-int main(){
-    char a[1005],b[1005];
-    struct UnigndBigNum x,y;
-    scanf("%s",&a);
-    scanf("%s",&b);
-    x.length= gps(a);
-    y.length= gps(b);
-    x.numBody=a;
-    y.numBody=b;
-    x.flag= judgeUnsigndBigNum(a);
-    y.flag= judgeUnigndBigNum(b);
 
-}
-    struct UnsigndBigNum totalcompare( SigndBigNum x, SigndBigNum y) {
-        if (x.flag > y.flag) {
-            return x;
-        } else if (x.flag < y.flag) {
-            return y;
-        } else {
-            calculate(x, y);
-        }
-    }
 /*int Scanf (char num[])
 {
     int len=strlen(num);
@@ -52,25 +35,8 @@ int main(){
             break;
     return i;
 }*/
-struct calculate(  UnsignedBigNum x, UnsignedBigNum y) {
 
-    if (x.flag > 0) {
-
-        if (x.length > y.length) {
-            return x;
-            else if (x.length < y.length) {
-                return y;
-                else if (x.length = y.length) {
-                    zhuwei(x, y);
-                }
-            }
-        }
-    }
-    else
-        return y;
-
-
-struct zhuwei( UnsigndBigNum x, UnsigndBigNum y){
+UnsignedBigNum zhuwei(UnsignedBigNum  x,UnsignedBigNum y){
     int i,j;
     for(i=0; i<x.length; i++)
     {
@@ -89,6 +55,29 @@ struct zhuwei( UnsigndBigNum x, UnsigndBigNum y){
     }
 
 }
+UnsignedBigNum calculate(  UnsignedBigNum x, UnsignedBigNum y) {
+
+
+        if (x.length * x.flag > y.length * y.flag) {
+            return x;
+        } else if (x.length * x.flag < y.length * y.flag) {
+            return y;
+        } else if (x.length * x.flag == y.length * y.flag) {
+            zhuwei(x, y);
+        }
+    }
+UnsignedBigNum totalcompare( UnsignedBigNum x, UnsignedBigNum y) {
+    if (x.flag > y.flag) {
+        return x;
+    } else if (x.flag < y.flag) {
+        return y;
+    } else {
+        calculate(x, y);
+    }
+}
+
+
+
 int gps(char num[])//找到小数点所在的位置(这能算是没有小数点的话遍历全部吗）
 {
 
@@ -118,3 +107,16 @@ int cmp1(char num1[],char num2[])//比较小数点的大小
          return sum;
      return 0;
  }*/
+int main(){
+    char a[1005],b[1005];
+    struct UnsignedBigNum x,y;
+    scanf("%s",&a);
+    scanf("%s",&b);
+    x.length= gps(a);
+    y.length= gps(b);
+    x.numBody;
+    y.numBody;
+    /*x.flag= judgeUnsigndBigNum(a);
+    y.flag= judgeUnigndBigNum(b);*/
+
+}
