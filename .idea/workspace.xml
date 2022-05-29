@@ -7,7 +7,9 @@
     <option name="reloaded" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager">
-    <generated />
+    <generated>
+      <config projectName="High_precision_real_number_library" targetName="High_precision_real_number_library" />
+    </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -15,10 +17,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="976c0c2f-7a71-4d37-b886-c3d10d847057" name="Changes" comment="initiate GUI">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+    <list default="true" id="976c0c2f-7a71-4d37-b886-c3d10d847057" name="Changes" comment="比较">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compute/bijiao.h" beforeDir="false" afterPath="$PROJECT_DIR$/Compute/bijiao.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +29,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -70,12 +72,12 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="High_precision_real_number_library" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="High_precision_real_number_library" TARGET_NAME="High_precision_real_number_library" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="High_precision_real_number_library" RUN_TARGET_NAME="High_precision_real_number_library">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="High_precision_real_number_library" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="High_precision_real_number_library" TARGET_NAME="High_precision_real_number_library" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="High_precision_real_number_library" RUN_TARGET_NAME="High_precision_real_number_library">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -93,6 +95,7 @@
       <workItem from="1653281191762" duration="1358000" />
       <workItem from="1653282573012" duration="2489000" />
       <workItem from="1653373220944" duration="1076000" />
+      <workItem from="1653746418190" duration="4603000" />
     </task>
     <task id="LOCAL-00001" summary="initiate GUI">
       <created>1652790141392</created>
@@ -143,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653282611146</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="比较">
+      <created>1653568260128</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1653568260128</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +172,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initiate GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="initiate GUI" />
+    <MESSAGE value="比较" />
+    <option name="LAST_COMMIT_MESSAGE" value="比较" />
   </component>
 </project>
