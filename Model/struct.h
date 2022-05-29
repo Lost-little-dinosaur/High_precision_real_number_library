@@ -20,9 +20,9 @@ typedef struct SignedBigNum {//有符号大整数
 }SignedBigNum;
 
 typedef struct FloatBigNum {//超高精度实数
-  int lengthIntager;//表示数据的位数
+  int lengthInteger;//表示数据的位数
     int lengthDecimal;//表示数据的位数
-    char intager[MAXSIZE];//整数部分
+    char integer[MAXSIZE];//整数部分
     char decimal[MAXSIZE];//小数部分
     int flag;//表示符号，-1则为负数、1则为正数、0则表示原数为0
 }FloatBigNum;

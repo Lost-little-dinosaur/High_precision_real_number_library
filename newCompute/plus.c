@@ -2,13 +2,15 @@
 // Created by Dinosaur on 2022/5/27.
 //
 
-#include "plus.h"
+
 #include "../Model/struct.h"
-#include<stdio.h>
+#include <stdio.h>
 #include <string.h>
-#include "..\Utils\cmpUnsignedBigNum.h"
 #include "subtraction.h"
 #include "..\Utils\IncludeZero.h"
+#include "plus.h"
+#include "..\Utils\Utils.h"
+
 struct UnsignedBigNum plusUnsignedBigNum( struct UnsignedBigNum x, struct UnsignedBigNum y) {
 
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
