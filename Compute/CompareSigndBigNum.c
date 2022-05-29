@@ -10,7 +10,7 @@
 #ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
 
-
+#define MAXSIZE 500
 struct SigndBigNum {//有符号大整数
     int length;//表示数据的位数
     char numBody[MAXSIZE];//表示数据主体
@@ -53,7 +53,7 @@ struct SigndBigNum totalcompare( struct SigndBigNum x,struct SigndBigNum y) {
                 break;
         return i;
     }
-    char calculate(struct SigndBigNum x,struct SigndBigNum y/*char num1[],char num2[]*/) {
+    struct  calculate(struct SigndBigNum x,struct SigndBigNum y) {
 
         if (x.flag > 0) {
 
@@ -100,7 +100,7 @@ struct SigndBigNum totalcompare( struct SigndBigNum x,struct SigndBigNum y) {
                 }
 
     }
-#include<stdio.h>
+/*#include<stdio.h>
 #include<string.h>
             int gps(char num[])//找到小数点所在的位置
             {
