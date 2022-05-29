@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include<string.h>
+#include"../Utils/judgeSigndBigNum.h"
+#include"../Utils/removeSigndBigNumFlag.h"
+#include "../Model/struct.h"
 //
 // Created by Dinosaur on 2022/5/23.
 //
@@ -11,15 +14,87 @@
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
 
 #define MAXSIZE 500
-struct SigndBigNum {//有符号大整数
+/*struct SignedBigNum {//有符号大整数
     int length;//表示数据的位数
     char numBody[MAXSIZE];//表示数据主体
     int flag;//表示符号，-1则为负数、1则为正数、0则表示原数为0
-};
-
+};*/
+/*int judgeSignedBigNum (char x[]) {//判断有符号整数是正数负数还是0
+    struct SignedBigNum SBN;
+    char c = x[0];
+    if (c == '+') {
+        SBN.flag = 1;
+    } else if (c == '-') {
+        SBN.flag = -1;
+    } else {
+        SBN.flag = 0;
+    }
+    return SBN.flag;
+}*/
+/*struct UnsignedBigNum removeSignedBigNumFlag(char x[]) {//移除有符号大整数的符号位得到numbody
+    struct UnsignedBigNum SBN;
+    SBN.length = strlen(x);
+    //printf("%d",SBN.length);
+    for (int i = 1, j = 0; i < SBN.length, j < SBN.length - 1; ++i, ++j) {
+        SBN.numBody[j] = x[i];
+        //printf("%c",SBN.numBody[j]);
+    }
+    return SBN;
+}
+ */
 #endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_STRUCT_H
 
-struct SigndBigNum totalcompare( struct SigndBigNum x,struct SigndBigNum y) {
+
+
+ /*   int Scanf (char num[])
+    {
+        int len=strlen(num);
+        int i;
+        for(i=0; i<len; i++)
+            if(num[i]=='.')
+                break;
+        return i;
+
+    }*/
+
+ SignedBigNum zhuwei(SignedBigNum x,SignedBigNum y){
+     int i,j;
+     for(i=0; i<x.length; i++)
+     {
+         if(x.numBody[i]!=y.numBody[i])
+             break;
+     }
+     int sum=x.numBody[i]-y.numBody[i];
+     if(sum * x.flag>0){
+         return x;
+     }
+     else if(sum * x.flag<0){
+         return y;
+     }
+     else if(sum=0){
+         return x;
+     }
+
+ }
+
+
+
+SignedBigNum  calculate(SignedBigNum x, SignedBigNum y) {
+
+     if (x.length * x.flag > y.length * y.flag) {
+         return x;
+     } else if (x.length * x.flag < y.length * y.flag) {
+         return y;
+     } else if (x.length * x.flag == y.length * y.flag) {
+         zhuwei(x, y);
+     }
+ }
+
+
+
+
+SignedBigNum totalcompare( SignedBigNum x,SignedBigNum y)
+{
     if (x.flag > y.flag) {
         return x;
     } else if (x.flag < y.flag) {
@@ -28,83 +103,13 @@ struct SigndBigNum totalcompare( struct SigndBigNum x,struct SigndBigNum y) {
         calculate(x, y);
     }
 }
-    int main() {
-        char a[1005],b[1005];
-        struct SigndBigNum x,y;
-       // UnsigndBignNum c,d;
-        scanf("%s",&a);
-        scanf("%s",&b);
-        y.flag= judgeSigndBigNum(b);
-        x.length= gps(a);
-        y.length= gps(b);
-        x.numBody=removeSigndBigNumFlag(a);
-        y.numBody= removeSigndBigNumFlag(b);
-        x.flag= judgeSigndBigNum(a);//小伙伴写的函数
 
 
-    }
-
-    int Scanf (char num[])
-    {
-        int len=strlen(num);
-        int i;
-        for(i=0; i<len; i++)
-            if(num[i]=='.')
-                break;
-        return i;
-    }
-    struct  calculate(struct SigndBigNum x,struct SigndBigNum y) {
-
-        if (x.flag > 0) {
-
-            if (x.length > y.length) {
-                return x;
-                else if (x.length < y.length) {
-                    return y;
-                    else if (x.length = y.length) {
-                        zhuwei(x, y);
-                    }
-                }
-            }
-        } else if (x.flag < 0) {
-
-            if (x.length < y.length) {
-                return x;
-                else if (x.length > y.length) {
-                    return y;
-                    else if (x.length1 = y.length) {
-                        zhuwei(x, y);
-                    }
-                }
-            }
-        }
-    }
 
 
-    int zhuwei(struct SigndBigNum x,struct SigndBigNum y){
-                int i,j;
-                for(i=0; i<x.length; i++)
-                {
-                    if(x.numBody[i]!=y.numBody[i])
-                        break;
-                }
-                int sum=x.numBody[i]-y.numBody[i];
-                if(sum * x.flag>0){
-                    return x;
-                }
-                else if(sum * x.flag<0){
-                    return y;
-                }
-                else if(sum=0){
-                    return x;
-                }
 
-    }
-/*#include<stdio.h>
-#include<string.h>
             int gps(char num[])//找到小数点所在的位置
             {
-                struct SigndBigNum a;
 
                 int len=strlen(num);
                 int i;
@@ -113,11 +118,11 @@ struct SigndBigNum totalcompare( struct SigndBigNum x,struct SigndBigNum y) {
                         break;
                 return i;
             }
-            int cmp1(char num1[],char num2[])//比较小数点的大小
+         /*   int cmp1(char num1[],char num2[])//比较小数点的大小
             {
                 int len=gps(num1);
                 return strcmp(num1+len,num2+len);
-            }
+            }*/
            /* int cmp(char num1[],char num2[],int len)//比较大数的大小
             {
                 int i;
@@ -131,3 +136,19 @@ struct SigndBigNum totalcompare( struct SigndBigNum x,struct SigndBigNum y) {
                     return sum;
                 return 0;
             }*/
+
+int main() {
+    char a[1005],b[1005];
+    struct SignedBigNum x,y;
+    // UnsigndBignNum c,d;
+    scanf("%s",&a);
+    scanf("%s",&b);
+    x.flag= judgeSignedBigNum(a);
+    y.flag= judgeSignedBigNum(b);
+    x.length= gps(a);
+    y.length= gps(b);
+    removeSignedBigNumFlag(a);
+    removeSignedBigNumFlag(b);
+    totalcompare(x,y);
+    return 0;
+}

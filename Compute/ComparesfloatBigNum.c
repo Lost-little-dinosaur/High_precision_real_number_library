@@ -12,34 +12,56 @@
 //#include "../Model/struct.h"
 #include "string.h"
 //#include "plusUnsigndBigNum.h"
+#include "../Utils/judgeFloatBigNum.h"
 
 #ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_MULTIPLYUNSIGNBIGNUM
 #define MAXSIZE 500
-typedef struct FloatBigNum {//超高精度实数
+/*typedef struct FloatBigNum {//超高精度实数
     int lengthIntager;//表示数据的位数
     int lengthDecimal;//表示数据的位数
     char intager[MAXSIZE];//整数部分
     char decimal[MAXSIZE];//小数部分
     int flag;//表示符号，-1则为负数、1则为正数、0则表示原数为0
 }FloatBigNum;
-
+*/
 #endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_STRUCT_H
+/*int judgeFloatBigNum (char x[]) {//判断高精度实数是正数负数还是0
+    struct FloatBigNum FBN;
+    char c = x[0];
+    if (c == '+') {
+        FBN.flag = 1;
+    } else if (c == '-') {
+        FBN.flag = -1;
+    } else {
+        FBN.flag = 0;
+    }
+    return FBN.flag;
+}*/
+FloatBigNum calculate(  FloatBigNum x, FloatBigNum y) {
 
-int main(){
-    char a[1005],b[1005];
-    struct FloatBigNum x,y;
-    scanf("%s",&a);
-    scanf("%s",&b);
-    x.length= gps(a);
-    y.length= gps(b);
-    x.numBody=a;
-    y.numBody=b;
-    x.flag= judgeFloatBigNum(a);
-    y.flag= judgeUnigndBigNum(b);
+    if (x.flag > 0) {
+
+        if (x.lengthIntager > y.lengthIntager) {
+            return x;
+            else if (x.lengthIntager < y.lengthIntager) {
+                return y;
+                else if (x.lengthIntager = y.lengthIntager) {
+                    zhuwei(x, y);
+                }
+            }
+        }
+    }
+    else
+        return y;
 
 }
-struct UnsigndBigNum totalcompare( FloatBigNum x, FloatBigNum y) {
+
+
+
+
+
+FloatBigNum totalcompare( FloatBigNum x, FloatBigNum y) {
     if (x.flag > y.flag) {
         return x;
     } else if (x.flag < y.flag) {
@@ -57,25 +79,8 @@ struct UnsigndBigNum totalcompare( FloatBigNum x, FloatBigNum y) {
             break;
     return i;
 }*/
-struct calculate(  FloatBigNum x, FloatBigNum y) {
 
-if (x.flag > 0) {
-
-if (x.length > y.length) {
-return x;
-else if (x.length < y.length) {
-return y;
-else if (x.length = y.length) {
-zhuwei(x, y);
-}
-}
-}
-}
-else
-return y;
-
-}
-struct zhuwei( FloatBigNum x,  FloatBigNum y){
+FloatBigNum zhuwei( FloatBigNum x,  FloatBigNum y){
 int i,j;
 for(i=0; i<x.length; i++)
 {
@@ -105,6 +110,7 @@ int gps(char num[])//找到小数点所在的位置(这能算是没有小数点�
             break;
     return i;
 }/*
+
 int cmp1(char num1[],char num2[])//比较小数点的大小
 {
     int len=gps(num1);
@@ -123,4 +129,20 @@ int cmp1(char num1[],char num2[])//比较小数点的大小
          return sum;
      return 0;
  }*/
+int main(){
+    char a[1005],b[1005];
+    struct FloatBigNum x,y;
+    scanf("%s",&a);
+    scanf("%s",&b);
+    x.lengthIntager=gps(a);
+    y.lengthIntager=gps(b);
+    x.lengthDecimal=strlen(a)-gps(a);
+    y.lengthDecimal= strlen(b)-gps(b);
+    x.intager[MAXSIZE]=;
+    y.intager[MAXSIZE]=;
+    x.decimal[MAXSIZE]=;
+    y.decimal[MAXSIZE]=;
+    x.flag= judgeFloatBigNum(a);
+    y.flag= (b);
 
+}
