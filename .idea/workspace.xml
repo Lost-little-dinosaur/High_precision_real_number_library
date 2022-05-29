@@ -17,10 +17,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="976c0c2f-7a71-4d37-b886-c3d10d847057" name="Changes" comment="比较">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Compute/bijiao.h" beforeDir="false" afterPath="$PROJECT_DIR$/Compute/bijiao.h" afterDir="false" />
-    </list>
+    <list default="true" id="976c0c2f-7a71-4d37-b886-c3d10d847057" name="Changes" comment="比较" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +34,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -95,7 +93,7 @@
       <workItem from="1653281191762" duration="1358000" />
       <workItem from="1653282573012" duration="2489000" />
       <workItem from="1653373220944" duration="1076000" />
-      <workItem from="1653746418190" duration="4603000" />
+      <workItem from="1653746418190" duration="4705000" />
     </task>
     <task id="LOCAL-00001" summary="initiate GUI">
       <created>1652790141392</created>
@@ -153,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653568260128</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="比较">
+      <created>1653821508808</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1653821508808</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,5 +179,16 @@
     <MESSAGE value="initiate GUI" />
     <MESSAGE value="比较" />
     <option name="LAST_COMMIT_MESSAGE" value="比较" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Compute/bijiao.h</url>
+          <line>31</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
