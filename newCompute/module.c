@@ -1,17 +1,30 @@
 //
-// Created by Sherlock on 2022/5/19.
+// Created by hang on 2022/5/31.
 //
-#ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_BASICDIVISE_H
-#define HIGH_PRECISION_REAL_NUMBER_LIBRARY_BASICDIVISE_H
 
+#include "module.h"
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
+#include "..\Model\struct.h"
 
+
+/*
+ * 函数主要实现三种大数数据类型的除法：
+ * 无符号整数，有符号整数，浮点数
+ * 其中，浮点数可以选择保留的 小数位数
+ */
+
+/*
+ * 接下来的功能利用数组实现基本的高精度取模运算
+ * 之后的两种数据类型的取模调用此基本模型
+ */
 
 char dividend[10001],divisor[10001];   //定义全局变量供下面的程序使用
 char arr[1000000],ans[1000000];    //ans用于储存计算结果，arr储存余数
+int declen;
+
 
 int Compare(char a[],char b[])     //比较字符串的大小
 {
@@ -82,8 +95,8 @@ void Sub(char a1[],char b1[])    //a1为被减数，b1为减数
     //去除高位0
     if(!d[i - 1])
     {
-      len--;
-      //i--;
+        len--;
+        //i--;
     }
     //将结果转化为字符逆着赋给数组ans
     for(i = 0;i < len;i++)
@@ -91,7 +104,7 @@ void Sub(char a1[],char b1[])    //a1为被减数，b1为减数
         ans[i] = d[len - i - 1] + '0';
     }
     //if(judge(ans))//若差全为0，则只输出一个
-      //  strcpy(ans,"0");
+    //  strcpy(ans,"0");
 }
 
 char* divise(char ina[],char inb[])
@@ -109,7 +122,10 @@ char* divise(char ina[],char inb[])
     }
 
     if(Compare(dividend,divisor) < 0)   //若被除数小于除数，则商为0，余数为被除数
+    {
         strcpy(arr,dividend);
+        strcpy(ans,"0");
+    }
     else if(!Compare(dividend,divisor)) //若两数相等，则商为1，余数为0
         ans[0] = '1';
     else         //若被除数大于除数
@@ -137,7 +153,7 @@ char* divise(char ina[],char inb[])
             if(flag)               //将商转换为字符
                 t[lent] += '0';
             else                  //对应处无值，即商为0
-               t[lent] = '0';
+                t[lent] = '0';
             //printf("t[%d] = %c\n",lent,t[lent] );
             if(tmp[0] == '0') strcpy(tmp,tmp+1);    //消去首位0
             if(!strcmp(tmp,"0"))     //若tmp为'0'
@@ -159,39 +175,70 @@ char* divise(char ina[],char inb[])
         strcpy(arr,tmp);
     }
     //if(judge(ans))
-      //  strcpy(ans,"0");
+    //  strcpy(ans,"0");
     if(judge(arr))
         strcpy(arr,"0");
     p = ans;
     return p;
 }
 
-int hasremindor(char a[],char b[])    //判断是否有余数
-{
-  divise(a,b);
-  if(Compare(arr,"0"))
-  {
-    return 1;
-  }
-  else
-  {
-    return 0;
-  }
-}
-
 char* modulo(char a[],char b[])
 {
-  divise(a,b);
-  char *p;
-  p = arr;
-  return p;
+    divise(a,b);
+    char *p;
+    p = arr;
+    return p;
 }
-/*
-int main(){
-  char a[20],b[20];
-  scanf("%s%s",a,b);
-  printf("%s",divise(a,b));
-}
-*/
 
-#endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_BASICDIVISE_H
+void reset()
+{
+    memset(dividend,0,sizeof(dividend));
+    memset(divisor,0, sizeof(divisor));
+    memset(arr,0, sizeof(arr));
+    memset(ans,0, sizeof(ans));
+    declen = 0;
+}
+
+
+
+/*
+ * 接下来开始利用构造好的除法模板进行三种除法类型的实现
+ */
+
+
+//无符号整数
+UnsignedBigNum ModUnsignedBigNum(UnsignedBigNum a,UnsignedBigNum b)
+{
+    UnsignedBigNum c;
+    if(a.flag == 0)
+    {
+        c.flag = 0;
+        strcpy(c.numBody,"0");
+        c.length = 0;
+        return c;
+    }
+    strcpy(c.numBody,modulo(a.numBody,b.numBody));
+    c.length = strlen(c.numBody);
+    c.flag = 1;
+    reset();
+    return c;
+}
+
+
+//有符号整数
+SignedBigNum ModSignedBigNum(SignedBigNum a,SignedBigNum b)
+{
+    SignedBigNum c;
+    c.flag = a.flag * b.flag;
+    if(a.flag == 0)
+    {
+        c.flag = 0;
+        strcpy(c.numBody,"0");
+        c.length = 0;
+        return c;
+    }
+    strcpy(c.numBody,modulo(a.numBody,b.numBody));
+    c.length = strlen(c.numBody);
+    reset();
+    return c;
+}

@@ -1,8 +1,7 @@
 #include <stdio.h>
 
+
 int main() {
-    printf("Hello, World!\n");
-    printf("Hello, World!\n");
-    printf("Hello, World!\n");
+    //这边放你们自己测试的代码，但就是别推上来了
     return 0;
 }

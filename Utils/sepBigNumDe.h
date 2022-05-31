@@ -6,16 +6,10 @@
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_SEPBIGNUMDE_H
 #define MAXSIZE 500
 #include <string.h>
-
-struct FloatBigNum {//超高精度实数
-    int lengthIntager;//表示数据的位数
-    int lengthDecimal;//表示数据的位数
-    char intager[MAXSIZE];//整数部分
-    char decimal[MAXSIZE];//小数部分
-    int flag;//表示符号，-1则为负数、1则为正数、0则表示原数为0
-};
+#include "..\Model\struct.h"
 char  *sepBigNumDe (char *x) {//输入带符号的实数 输出小数部分
     struct FloatBigNum FBN;
+    memset(FBN.decimal,0,sizeof(FBN.decimal));
     int j, k, len;
     int i;
     len = strlen(x);
@@ -24,8 +18,9 @@ char  *sepBigNumDe (char *x) {//输入带符号的实数 输出小数部分
             break;
         }
     }
+    //printf("%d %d",i,len);
     j = i;
-    for (int i = j + 1, k = 0; i < len, k < len - j; ++i, ++k) {
+    for (i = j + 1, k = 0; i < len, k < len - j; ++i, ++k) {
         FBN.decimal[k] = x[i];
         //printf("%c",FBN.decimal[k]);
     }

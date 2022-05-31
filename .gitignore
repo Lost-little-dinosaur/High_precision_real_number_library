@@ -1,0 +1,4 @@
+.idea
+cmake-build-debug
+.idea/workspace.xml
+cmake-build-debug/CMakeFiles/clion-log.txt
