@@ -3,14 +3,13 @@
 //
 #pragma once
 #include "..\Model\struct.h"
-
 #include <string.h>
 #include "..\Utils\Utils.h"
 #include "subtraction.h"
 #include "plus.h"
 #define MAXSIZE 500
 
-UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct UnsignedBigNum y) {
+UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct UnsignedBigNum y) {   //无符号减法
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
     struct UnsignedBigNum r;
     memset(r.numBody, 0, sizeof(r.numBody));
@@ -20,7 +19,7 @@ UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct UnsignedBigNum
     sign = cmpUnsignedBigNum(x, y);
     //printf("sign=%d\n", sign);
 
-    for (i = len1 - 1, k = 0; i >= 0, k < len1; i--, k++) {
+    for (i = len1 - 1, k = 0; i >= 0, k < len1; i--, k++) { //逆序放入两个数组
         a[k] = x.numBody[i] - '0';
         //printf("%d ",a[k]);
     }
@@ -28,7 +27,7 @@ UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct UnsignedBigNum
     for (j = len2 - 1, m = 0; j >= 0, m < len2; j--, m++) {
         b[m] = y.numBody[j] - '0';
         //printf("%d ",b[m]);
-    }//逆序放入两个数组
+    }
 
     /*for (int i = 0; i < len1; ++i) {
         printf("%d", a[i]);
@@ -91,13 +90,14 @@ UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct UnsignedBigNum
             }
             //printf("%c ", r.numBody[j]);
         }
-    } else
+    } else {
         strcpy(r.numBody, "0");
-
+    }
     r.length = strlen(r.numBody);
     return r;
 }
-struct SignedBigNum subSignedBigNum(struct SignedBigNum x,struct SignedBigNum y) {
+
+struct SignedBigNum subSignedBigNum(struct SignedBigNum x,struct SignedBigNum y) {  //有符号减法
     //SigndBigNum b;
     //SigndBigNum a;
     struct SignedBigNum result;
@@ -185,10 +185,9 @@ struct SignedBigNum subSignedBigNum(struct SignedBigNum x,struct SignedBigNum y)
 
 }
 
-struct FloatBigNum subFloatBigNum(FloatBigNum x,FloatBigNum y) {
+struct FloatBigNum subFloatBigNum(FloatBigNum x,FloatBigNum y) {    //高精度浮点数减法
     FloatBigNum r,y1;
-    SignedBigNum ai, ad, bi, bd, ri, rd;
-    int len, len2;
+    int len;
     len = x.lengthDecimal > y.lengthDecimal ? x.lengthDecimal : y.lengthDecimal;
     memset(y1.integer,0, sizeof(y1.integer));
     memset(y1.decimal,0, sizeof(y1.decimal));
