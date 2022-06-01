@@ -2,26 +2,24 @@
 // Created by Dinosaur on 2022/5/27.
 //
 
-
 #include "../Model/struct.h"
-#include <stdio.h>
 #include <string.h>
 #include "subtraction.h"
 #include "..\Utils\IncludeZero.h"
 #include "plus.h"
 #include "..\Utils\Utils.h"
 
-struct UnsignedBigNum plusUnsignedBigNum(struct UnsignedBigNum x, struct UnsignedBigNum y) {
+struct UnsignedBigNum plusUnsignedBigNum( struct UnsignedBigNum x, struct UnsignedBigNum y) {
 
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
     struct UnsignedBigNum r;
     memset(r.numBody, 0, sizeof(r.numBody));
     int len1 = x.length, len2 = y.length, len3 = len1 > len2 ? len1 : len2;
     int i, j, k, m, n, flag = 0;
-    for (i = len1 - 1, k = 0; i >= 0, k < len1; i--, k++) {
+    for (i = len1 - 1, k = 0; i >= 0, k < len1; i--, k++) { //逆序转为整型数组
         a[k] = x.numBody[i] - '0';
     }
-    for (j = len2 - 1, m = 0; j >= 0, m < len2; j--, m++) {
+    for (j = len2 - 1, m = 0; j >= 0, m < len2; j--, m++) { //逆序转为整型数组
         b[m] = y.numBody[j] - '0';
     }
     /*for (int i = 0; i < len1; ++i) {
@@ -32,7 +30,7 @@ struct UnsignedBigNum plusUnsignedBigNum(struct UnsignedBigNum x, struct Unsigne
         printf("%d", b[j]);
     }
     printf("\n");*/
-    if (len1 < len2) {
+    if (len1 < len2) { //短的数逆序补0
         for (int i = len1; i < len2; ++i) {
             a[i] = 0;
         }
@@ -61,20 +59,19 @@ struct UnsignedBigNum plusUnsignedBigNum(struct UnsignedBigNum x, struct Unsigne
     }
     int i1, n2;
     n2 = n;
-    r.length = 0;
-    for (i1 = 0; n >= 0, i1 <= n2; n--, i1++) {
+    for (i1 = 0; n >= 0, i1 <= n2; n--, i1++) {  //输出到r中
         r.numBody[i1] = result[n] + '0';
-        ++r.length;
         //printf("%d", r[i1]);
     }
+    r.length= strlen(r.numBody);
     return r;
 }
 
-struct SignedBigNum plusSignedBigNum(struct SignedBigNum x, struct SignedBigNum y) {
+struct SignedBigNum plusSignedBigNum(struct SignedBigNum x,struct SignedBigNum y) {
     //SigndBigNum b;
     //SigndBigNum a;
     struct SignedBigNum result;
-    memset(result.numBody, 0, sizeof(result.numBody));
+    memset(result.numBody,0,sizeof(result.numBody));
     struct UnsignedBigNum c, d, e;//result不带符号
     strcpy(c.numBody, x.numBody);//方便后面无符号加法调用
     strcpy(d.numBody, y.numBody);
@@ -82,23 +79,22 @@ struct SignedBigNum plusSignedBigNum(struct SignedBigNum x, struct SignedBigNum 
     d.length = strlen(y.numBody);
     //a.flag = x.flag;
     //b.flag = y.flag;
-    if (x.flag == 1 && y.flag == 1) {//同+
+    if (x.flag == 1 && y.flag == 1) {   //同正
         e = plusUnsignedBigNum(c, d);
         strcpy(result.numBody, e.numBody);
         //printf("%s\n",e.numBody);
-
         result.flag = 1;
         result.length = strlen(result.numBody);
-    } else if (x.flag == -1 && y.flag == -1) {//同-
+    } else if (x.flag == -1 && y.flag == -1) {  //同负
         e = plusUnsignedBigNum(c, d);
         strcpy(result.numBody, e.numBody);
         result.flag = -1;
         result.length = strlen(result.numBody);
-    } else if (x.flag == 0) {//a为0
+    } else if (x.flag == 0) {   //a为0
         strcpy(result.numBody, y.numBody);
         result.length = strlen(y.numBody);
         result.flag = y.flag;
-    } else if (y.flag == 0) {//b为0
+    } else if (y.flag == 0) {   //b为0
         strcpy(result.numBody, x.numBody);
         result.length = strlen(x.numBody);
         result.flag = x.flag;
@@ -143,7 +139,7 @@ struct SignedBigNum plusSignedBigNum(struct SignedBigNum x, struct SignedBigNum 
 
 }
 
-struct FloatBigNum plusFloatBigNum(FloatBigNum x, FloatBigNum y) {
+struct FloatBigNum plusFloatBigNum(FloatBigNum x,FloatBigNum y) {
     FloatBigNum r;
     SignedBigNum ai, ad, bi, bd, ri, rd;
     int len, len2;
@@ -159,25 +155,26 @@ struct FloatBigNum plusFloatBigNum(FloatBigNum x, FloatBigNum y) {
     ri = plusSignedBigNum(ai, bi);
     len2 = strlen(ri.numBody);
     rd = IncludeZeroSPlus(ad, bd);
-    if (rd.length == len + 1)//小数相加有进位到整数部分
+    if (rd.length == len + 1)   //小数相加有进位到整数部分
     {
-        SignedBigNum bit;
+        SignedBigNum bit;   //进位标志
         bit.flag = 1;
         bit.length = 1;
         strcpy(bit.numBody, "1");
         ri = plusSignedBigNum(ri, bit);
     }
     strcpy(r.integer, ri.numBody);
-    r.lengthInteger = strlen(r.integer);
-    r.flag = ri.flag;
-    if (rd.length == len + 1)//小数相加有进位到整数部分
+    r.lengthInteger= strlen(r.integer);
+    r.flag=ri.flag;
+    if (rd.length == len + 1)   //小数相加有进位到整数部分
     {
         for (int i = 0, j = 1; i < len, j < rd.length; ++i, ++j) {
-            r.decimal[i] = rd.numBody[j];
+            r.decimal[i]=rd.numBody[j];
         }
-    } else {
-        strcpy(r.decimal, rd.numBody);
     }
-    r.lengthDecimal = strlen(r.decimal);
+    else{
+        strcpy(r.decimal,rd.numBody);
+    }
+    r.lengthDecimal= strlen(r.decimal);
     return r;
 }
