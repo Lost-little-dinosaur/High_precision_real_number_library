@@ -9,13 +9,14 @@
 #include "plus.h"
 #include "..\Utils\Utils.h"
 
-struct UnsignedBigNum plusUnsignedBigNum( struct UnsignedBigNum x, struct UnsignedBigNum y) {
+struct UnsignedBigNum plusUnsignedBigNum(struct UnsignedBigNum x, struct UnsignedBigNum y) {
 
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
     struct UnsignedBigNum r;
     memset(r.numBody, 0, sizeof(r.numBody));
     int len1 = x.length, len2 = y.length, len3 = len1 > len2 ? len1 : len2;
     int i, j, k, m, n, flag = 0;
+
     for (i = len1 - 1, k = 0; i >= 0, k < len1; i--, k++) { //逆序转为整型数组
         a[k] = x.numBody[i] - '0';
     }
@@ -59,19 +60,22 @@ struct UnsignedBigNum plusUnsignedBigNum( struct UnsignedBigNum x, struct Unsign
     }
     int i1, n2;
     n2 = n;
+
     for (i1 = 0; n >= 0, i1 <= n2; n--, i1++) {  //输出到r中
+
         r.numBody[i1] = result[n] + '0';
+        ++r.length;
         //printf("%d", r[i1]);
     }
     r.length= strlen(r.numBody);
     return r;
 }
 
-struct SignedBigNum plusSignedBigNum(struct SignedBigNum x,struct SignedBigNum y) {
+struct SignedBigNum plusSignedBigNum(struct SignedBigNum x, struct SignedBigNum y) {
     //SigndBigNum b;
     //SigndBigNum a;
     struct SignedBigNum result;
-    memset(result.numBody,0,sizeof(result.numBody));
+    memset(result.numBody, 0, sizeof(result.numBody));
     struct UnsignedBigNum c, d, e;//result不带符号
     strcpy(c.numBody, x.numBody);//方便后面无符号加法调用
     strcpy(d.numBody, y.numBody);
@@ -139,7 +143,7 @@ struct SignedBigNum plusSignedBigNum(struct SignedBigNum x,struct SignedBigNum y
 
 }
 
-struct FloatBigNum plusFloatBigNum(FloatBigNum x,FloatBigNum y) {
+struct FloatBigNum plusFloatBigNum(FloatBigNum x, FloatBigNum y) {
     FloatBigNum r;
     SignedBigNum ai, ad, bi, bd, ri, rd;
     int len, len2;
@@ -164,17 +168,18 @@ struct FloatBigNum plusFloatBigNum(FloatBigNum x,FloatBigNum y) {
         ri = plusSignedBigNum(ri, bit);
     }
     strcpy(r.integer, ri.numBody);
+
     r.lengthInteger= strlen(r.integer);
     r.flag=ri.flag;
     if (rd.length == len + 1)   //小数相加有进位到整数部分
+
     {
         for (int i = 0, j = 1; i < len, j < rd.length; ++i, ++j) {
-            r.decimal[i]=rd.numBody[j];
+            r.decimal[i] = rd.numBody[j];
         }
+    } else {
+        strcpy(r.decimal, rd.numBody);
     }
-    else{
-        strcpy(r.decimal,rd.numBody);
-    }
-    r.lengthDecimal= strlen(r.decimal);
+    r.lengthDecimal = strlen(r.decimal);
     return r;
 }
