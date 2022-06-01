@@ -342,19 +342,19 @@ FloatBigNum DiviseFloatBigNum(FloatBigNum a,FloatBigNum b)
     if(a.flag == 0)
     {
         c.flag = 0;
-        strcpy(c.intager,"0");
+        strcpy(c.integer,"0");
         strcpy(c.decimal,"0");
-        c.lengthIntager = 0;
+        c.lengthInteger = 0;
         c.lengthDecimal = 0;
         return c;
     }
     char stra[1005],strb[1005];
-    strcpy(stra, combine(a.intager,a.decimal));
-    strcpy(strb, combine(b.intager,b.decimal));
-    strcpy(c.intager,divise_int(stra,strb));
+    strcpy(stra, combine(a.integer,a.decimal));
+    strcpy(strb, combine(b.integer,b.decimal));
+    strcpy(c.integer,divise_int(stra,strb));
     setpercision();
     strcpy(c.decimal, divise_dec(stra,strb));
-    c.lengthIntager = strlen(c.intager);
+    c.lengthInteger = strlen(c.integer);
     c.lengthDecimal = strlen(c.decimal);
     return c;
 }
@@ -385,13 +385,13 @@ int main()
     printf("c2 = %s\n",c2.numBody);
 
     FloatBigNum a3,b3,c3;
-    scanf("%s%s%s%s",a3.intager,a3.decimal,b3.intager,b3.decimal);
+    scanf("%s%s%s%s",a3.integer,a3.decimal,b3.integer,b3.decimal);
     a3.flag = 1;
     b3.flag = 1;
     c3 = DiviseFloatBigNum(a3,b3);
-    printf("c3 length = %d\n",c3.lengthIntager + c3.lengthDecimal);
+    printf("c3 length = %d\n",c3.lengthInteger + c3.lengthDecimal);
     printf("c3 flag = %d\n",c3.flag);
-    printf("c3 = %s.%s\n",c3.intager,c3.decimal);
+    printf("c3 = %s.%s\n",c3.integer,c3.decimal);
     /*
     char a4_int[20],a4_dec[20],b4_int[20],b4_dec[20],a4[40],b4[40];
     scanf("%s%s%s%s",a4_int,a4_dec,b4_int,b4_dec);

@@ -1,7 +1,7 @@
 //
 // Created by Dinosaur on 2022/5/19.
 //
-#define MAXSIZE 500//数字的最大长度为500
+#define MAXSIZE 5000//数字的最大长度为500
 
 #ifndef HIGH_PRECISION_REAL_NUMBER_LIBRARY_STRUCT_H
 #define HIGH_PRECISION_REAL_NUMBER_LIBRARY_STRUCT_H

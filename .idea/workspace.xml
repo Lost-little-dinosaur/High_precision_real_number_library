@@ -19,7 +19,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="976c0c2f-7a71-4d37-b886-c3d10d847057" name="Changes" comment="refactor main.c">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/struct.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/struct.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/cmpUnsignedBigNum.h" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/cmpUnsignedBigNum.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/sepBigNumIn.h" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/sepBigNumIn.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newCompute/division.c" beforeDir="false" afterPath="$PROJECT_DIR$/newCompute/division.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newCompute/multiplication.c" beforeDir="false" afterPath="$PROJECT_DIR$/newCompute/multiplication.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newCompute/plus.c" beforeDir="false" afterPath="$PROJECT_DIR$/newCompute/plus.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +133,10 @@
       <workItem from="1653565575412" duration="1677000" />
       <workItem from="1653568127202" duration="3000" />
       <workItem from="1653611713135" duration="3070000" />
-      <workItem from="1653614824150" duration="1428000" />
+      <workItem from="1653614824150" duration="1650000" />
+      <workItem from="1653811124526" duration="2035000" />
+      <workItem from="1653826827351" duration="10178000" />
+      <workItem from="1654079816057" duration="1958000" />
     </task>
     <task id="LOCAL-00001" summary="initiate GUI">
       <created>1652790141392</created>
@@ -224,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653615926175</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="refactor main.c">
+      <created>1653616266095</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1653616266095</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,10 +273,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/newCompute/multiplication.c</url>
-          <line>90</line>
-          <option name="timeStamp" value="2" />
+          <line>269</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="maxNum.numBody" />
+        <watch expression="maxNum.numBody" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
