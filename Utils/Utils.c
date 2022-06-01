@@ -60,9 +60,10 @@ int judgeSignedBigNum(char x[]) {//判断有符号整数是正数负数还是0
 
 struct UnsignedBigNum removeSigndBigNumFlag(char x[]) {//移除有符号大整数的符号位得到numbody
     struct UnsignedBigNum SBN;
-    SBN.length = strlen(x);
+    memset(SBN.numBody,0, sizeof(SBN.numBody));
+    SBN.length = strlen(x)-1;
     //printf("%d",SBN.length);
-    for (int i = 1, j = 0; i < SBN.length, j < SBN.length - 1; ++i, ++j) {
+    for (int i = 1, j = 0; i < SBN.length+1, j < SBN.length ; ++i, ++j) {
         SBN.numBody[j] = x[i];
         //printf("%c",SBN.numBody[j]);
     }
