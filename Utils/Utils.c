@@ -17,20 +17,6 @@ char addSignedBigNumFlag(struct SignedBigNum x) {//添加符号
     return f;
 }
 
-int cmpUnsignedBigNum(UnsignedBigNum x, UnsignedBigNum y) {//有符号数符号一致时简单比较
-    int flag;
-    if (x.length > y.length)
-        flag = 1;
-    else if (x.length == y.length) {
-        if (strcmp(x.numBody, y.numBody) >= 0)
-            flag = 1;
-        else
-            flag = 0;
-    } else
-        flag = 0;
-
-    return flag;
-}
 
 int judgeFloatBigNum(char x[]) {//判断高精度实数是正数负数还是0
     struct FloatBigNum FBN;
