@@ -18,10 +18,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="976c0c2f-7a71-4d37-b886-c3d10d847057" name="Changes" comment="refactor main.c">
-      <change afterPath="$PROJECT_DIR$/newCompute/compare.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newCompute/compare.h" afterDir="false" />
+    <list default="true" id="976c0c2f-7a71-4d37-b886-c3d10d847057" name="Changes" comment="fix divition's struct and add right mutiplyUnsignint">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newCompute/multiplication.c" beforeDir="false" afterPath="$PROJECT_DIR$/newCompute/multiplication.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newCompute/multiplication.h" beforeDir="false" afterPath="$PROJECT_DIR$/newCompute/multiplication.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newCompute/plus.c" beforeDir="false" afterPath="$PROJECT_DIR$/newCompute/plus.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newCompute/subtraction.c" beforeDir="false" afterPath="$PROJECT_DIR$/newCompute/subtraction.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,25 +62,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "cmake.loaded.for.project": "true",
-    "last_opened_file_path": "E:/document/learning_materials/chengxushejishijian/src/High_precision_real_number_library/Compute",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cmake.loaded.for.project&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/document/learning_materials/chengxushejishijian/src/High_precision_real_number_library/Compute&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\document\learning_materials\chengxushejishijian\src\High_precision_real_number_library\Compute" />
@@ -86,13 +89,13 @@
       <recent name="E:\document\learning_materials\chengxushejishijian\src\High_precision_real_number_library\Compute" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.High_precision_real_number_library">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+  <component name="RunManager" selected="CMake 应用程序.High_precision_real_number_library">
+    <configuration name="High_precision_real_number_library" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="High_precision_real_number_library" TARGET_NAME="High_precision_real_number_library" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="High_precision_real_number_library" RUN_TARGET_NAME="High_precision_real_number_library">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="High_precision_real_number_library" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="High_precision_real_number_library" TARGET_NAME="High_precision_real_number_library" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="High_precision_real_number_library" RUN_TARGET_NAME="High_precision_real_number_library">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -103,8 +106,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.High_precision_real_number_library" />
-      <item itemvalue="CMake Application.demo" />
+      <item itemvalue="CMake 应用程序.High_precision_real_number_library" />
+      <item itemvalue="CMake 应用程序.demo" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -278,8 +281,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/newCompute/multiplication.c</url>
-          <line>269</line>
-          <option name="timeStamp" value="22" />
+          <line>424</line>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
