@@ -21,12 +21,12 @@
  * 之后的三种数据类型的除法调用此基本模型
  */
 
-char dividend[10001],divisor[10001];   //定义全局变量供下面的程序使用
-char arr[1000000],ans[1000000];    //ans用于储存计算结果，arr储存余数
+char division_dividend[10001],division_divisor[10001];   //定义全局变量供下面的程序使用
+char division_arr[1000000],division_ans[1000000];    //ans用于储存计算结果，arr储存余数
 int declen;
 
 
-int Compare(char a[],char b[])     //比较字符串的大小
+int division_Compare(char a[],char b[])     //比较字符串的大小
 {
     int lena,lenb,i;
     lena = strlen(a);
@@ -57,7 +57,7 @@ int Compare(char a[],char b[])     //比较字符串的大小
     }
 }
 
-int judge(char ch[])         //判断字符串ch是否全为0，若全为0，返回1，否则返回0
+int division_judge(char ch[])         //判断字符串ch是否全为0，若全为0，返回1，否则返回0
 {
     int i,len;
     len = strlen(ch);
@@ -71,7 +71,7 @@ int judge(char ch[])         //判断字符串ch是否全为0，若全为0，返
     return 1;
 }
 
-void Sub(char a1[],char b1[])    //a1为被减数，b1为减数
+void division_Sub(char a1[],char b1[])    //a1为被减数，b1为减数
 {
     int lena,lenb,i,len;
     int a[1000] = {0},b[1000] = {0},d[1000]= {0};
@@ -101,51 +101,51 @@ void Sub(char a1[],char b1[])    //a1为被减数，b1为减数
     //将结果转化为字符逆着赋给数组ans
     for(i = 0;i < len;i++)
     {
-        ans[i] = d[len - i - 1] + '0';
+        division_ans[i] = d[len - i - 1] + '0';
     }
-    //if(judge(ans))//若差全为0，则只输出一个
-    //  strcpy(ans,"0");
+    //if(division_judge(division_ans))//若差全为0，则只输出一个
+    //  strcpy(division_ans,"0");
 }
 
-char* divise_int(char ina[],char inb[])
+char* division_divise_int(char ina[],char inb[])
 {
-    strcpy(dividend,ina);
-    strcpy(divisor,inb);
+    strcpy(division_dividend,ina);
+    strcpy(division_divisor,inb);
     char *p;
     char tmp[1000],t[1000];    //tmp储存被除数片段
     int lens,lent,i,j,k,flag = 0;
-    memset(arr,0,sizeof(arr));
-    if(judge(divisor))
+    memset(division_arr,0,sizeof(division_arr));
+    if(division_judge(division_divisor))
     {
         p = "除数不能为0!";
         return p;
     }
 
-    if(Compare(dividend,divisor) < 0)   //若被除数小于除数，则商为0，余数为被除数
+    if(division_Compare(division_dividend,division_divisor) < 0)   //若被除数小于除数，则商为0，余数为被除数
     {
-        strcpy(arr,dividend);
-        strcpy(ans,"0");
+        strcpy(division_arr,division_dividend);
+        strcpy(division_ans,"0");
     }
-    else if(!Compare(dividend,divisor)) //若两数相等，则商为1，余数为0
-        ans[0] = '1';
+    else if(!division_Compare(division_dividend,division_divisor)) //若两数相等，则商为1，余数为0
+        division_ans[0] = '1';
     else         //若被除数大于除数
     {
         j = lent = 0;
-        lens = strlen(dividend);
+        lens = strlen(division_dividend);
         memset(tmp,0,sizeof(tmp));
         memset(t,0,sizeof(t));
         for(i = 0;i < lens;i++)   //得到被除数切片,得到整型数组形式的商
         {                      //t的一个元素表示一次相除的商
             //printf("i = %d,j = %d\n",i,j);
-            tmp[j++] = dividend[i];
+            tmp[j++] = division_dividend[i];
             flag = 0;
             //printf("tmp = %s\n",tmp);
-            while(Compare(tmp,divisor) >= 0)    //可以除
+            while(division_Compare(tmp,division_divisor) >= 0)    //可以除
             {//用减法获得对应位置的商
-                Sub(tmp,divisor);
-                strcpy(tmp,ans);
+                division_Sub(tmp,division_divisor);
+                strcpy(tmp,division_ans);
                 //printf("new tmp = %s\n",tmp);
-                memset(ans,0,sizeof(ans));
+                memset(division_ans,0,sizeof(division_ans));
                 t[lent]++;
                 //printf("%d:lent = %d,%s\n",i,lent,t);
                 flag=1;            //对应位置有值
@@ -170,68 +170,68 @@ char* divise_int(char ina[],char inb[])
         }
         for(j = i;j < lent;j++)
         {
-            ans[k++] = t[j];
+            division_ans[k++] = t[j];
         }
-        strcpy(arr,tmp);
+        strcpy(division_arr,tmp);
     }
-    //if(judge(ans))
-    //  strcpy(ans,"0");
-    if(judge(arr))
-        strcpy(arr,"0");
-    p = ans;
+    //if(division_judge(division_ans))
+    //  strcpy(division_ans,"0");
+    if(division_judge(division_arr))
+        strcpy(division_arr,"0");
+    p = division_ans;
     return p;
 }
 
-char* modulo(char a[],char b[])
+char* division_modulo(char a[],char b[])
 {
-    divise_int(a,b);
+    division_divise_int(a,b);
     char *p;
-    p = arr;
+    p = division_arr;
     return p;
 }
 
-void setpercision(){
+void division_setpercision(){
     printf("请设置小数的精度（20~500）：\n");
     scanf("%d",&declen);
 }
 
-char* divise_dec(char ina[],char inb[])
+char* division_divise_dec(char ina[],char inb[])
 {
     char *c ;
-    c = modulo(ina,inb);
-    memset(ans,0,sizeof(ans));
-    strcpy(dividend,c);
-    strcpy(divisor,inb);
-    for(int i = strlen(dividend);i < declen - 1;i++){
-        dividend[i] = '0';
+    c = division_modulo(ina,inb);
+    memset(division_ans,0,sizeof(division_ans));
+    strcpy(division_dividend,c);
+    strcpy(division_divisor,inb);
+    for(int i = strlen(division_dividend);i < declen - 1;i++){
+        division_dividend[i] = '0';
     }
     char *p;
     char tmp[1000],t[1000];    //tmp储存被除数片段
     int lens,lent,i,j,k,flag = 0;
-    memset(arr,0,sizeof(arr));
-    if(judge(divisor))
+    memset(division_arr,0,sizeof(division_arr));
+    if(division_judge(division_divisor))
     {
         p = "除数不能为0!";
         return p;
     }
 
     j = lent = 0;
-    lens = strlen(dividend);
+    lens = strlen(division_dividend);
     memset(tmp,0,sizeof(tmp));
     memset(t,0,sizeof(t));
-    //printf("%s %s\n",dividend,divisor);
+    //printf("%s %s\n",division_dividend,division_divisor);
     for(i = 0;i < lens;i++)   //得到被除数切片,得到整型数组形式的商
     {                      //t的一个元素表示一次相除的商
         //printf("i = %d,j = %d\n",i,j);
-        tmp[j++] = dividend[i];
+        tmp[j++] = division_dividend[i];
         flag = 0;
         //printf("tmp = %s\n",tmp);
-        while(Compare(tmp,divisor) >= 0)    //可以除
+        while(division_Compare(tmp,division_divisor) >= 0)    //可以除
         {//用减法获得对应位置的商
-            Sub(tmp,divisor);
-            strcpy(tmp,ans);
+            division_Sub(tmp,division_divisor);
+            strcpy(tmp,division_ans);
             //printf("new tmp = %s\n",tmp);
-            memset(ans,0,sizeof(ans));
+            memset(division_ans,0,sizeof(division_ans));
             t[lent]++;
             //printf("%d:lent = %d,%s\n",i,lent,t);
             flag=1;            //对应位置有值
@@ -256,28 +256,28 @@ char* divise_dec(char ina[],char inb[])
     }
     for(j = i;j < lent;j++)
     {
-        ans[k++] = t[j];
+        division_ans[k++] = t[j];
     }
-    strcpy(arr,tmp);
+    strcpy(division_arr,tmp);
 
-    //if(judge(ans))
-    //  strcpy(ans,"0");
-    if(judge(arr))
-        strcpy(arr,"0");
-    p = ans;
+    //if(division_judge(division_ans))
+    //  strcpy(division_ans,"0");
+    if(division_judge(division_arr))
+        strcpy(division_arr,"0");
+    p = division_ans;
     return p;
 }
 
-void reset()
+void division_reset()
 {
-    memset(dividend,0,sizeof(dividend));
-    memset(divisor,0, sizeof(divisor));
-    memset(arr,0, sizeof(arr));
-    memset(ans,0, sizeof(ans));
+    memset(division_dividend,0,sizeof(division_dividend));
+    memset(division_divisor,0, sizeof(division_divisor));
+    memset(division_arr,0, sizeof(division_arr));
+    memset(division_ans,0, sizeof(division_ans));
     declen = 0;
 }
 
-char* combine(char _int[],char _dec[])
+char* division_combine(char _int[],char _dec[])
 {
     char *all;
     char num[1005];
@@ -308,10 +308,10 @@ UnsignedBigNum DiviseUnsignedBigNum(UnsignedBigNum a,UnsignedBigNum b)
         c.length = 0;
         return c;
     }
-    strcpy(c.numBody,divise_int(a.numBody,b.numBody));
+    strcpy(c.numBody,division_divise_int(a.numBody,b.numBody));
     c.length = strlen(c.numBody);
     c.flag = 1;
-    reset();
+    division_reset();
     return c;
 }
 
@@ -328,9 +328,9 @@ SignedBigNum DiviseSignedBigNum(SignedBigNum a,SignedBigNum b)
         c.length = 0;
         return c;
     }
-    strcpy(c.numBody,divise_int(a.numBody,b.numBody));
+    strcpy(c.numBody,division_divise_int(a.numBody,b.numBody));
     c.length = strlen(c.numBody);
-    reset();
+    division_reset();
     return c;
 }
 
@@ -349,11 +349,11 @@ FloatBigNum DiviseFloatBigNum(FloatBigNum a,FloatBigNum b)
         return c;
     }
     char stra[1005],strb[1005];
-    strcpy(stra, combine(a.integer,a.decimal));
-    strcpy(strb, combine(b.integer,b.decimal));
-    strcpy(c.integer,divise_int(stra,strb));
-    setpercision();
-    strcpy(c.decimal, divise_dec(stra,strb));
+    strcpy(stra, division_combine(a.integer,a.decimal));
+    strcpy(strb, division_combine(b.integer,b.decimal));
+    strcpy(c.integer,division_divise_int(stra,strb));
+    division_setpercision();
+    strcpy(c.decimal, division_divise_dec(stra,strb));
     c.lengthInteger = strlen(c.integer);
     c.lengthDecimal = strlen(c.decimal);
     return c;
@@ -395,8 +395,8 @@ int main()
     /*
     char a4_int[20],a4_dec[20],b4_int[20],b4_dec[20],a4[40],b4[40];
     scanf("%s%s%s%s",a4_int,a4_dec,b4_int,b4_dec);
-    strcpy(a4, combine(a4_int,a4_dec));
-    strcpy(b4, combine(b4_int,b4_dec));
+    strcpy(a4, division_combine(a4_int,a4_dec));
+    strcpy(b4, division_combine(b4_int,b4_dec));
     printf("%s\n%s",a4,b4);
 
 }
