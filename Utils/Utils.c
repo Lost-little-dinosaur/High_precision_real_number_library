@@ -5,7 +5,7 @@
 #include "Utils.h"
 #include "string.h"
 #define MAXSIZE 500
-
+#include <stdio.h>
 
 char addSignedBigNumFlag(struct SignedBigNum x) {//添加符号
     char f = ' ';
@@ -107,4 +107,54 @@ char *sepBigNumIn(char *x) {//输入带符号的实数 输出整数部分
         //printf("%c", FBN.intager[k]);
     }
     return FBN.integer;
+}
+
+int judgeOverflow(char num1[],char num2[]) {   //判断是否溢出 数据输入在main里执行
+    int flag = 1, len1 = 0, len2 = 0;
+    len1 = strlen(num1);
+    len2 = strlen(num2);
+    if (len1 > MAXSIZE || len2 > MAXSIZE) {
+        flag = -1;
+    }
+    return flag;
+}
+
+int *judgeType(char x[],char y[]) {  //判断数据类型 如果type[0] type[1]不相等则输入错误（在main里实现）
+    int type[2] = {0, 0};// 1表示无符号 2表示有符号 3表示浮点数 type[0]为第一个数的类型 type[1]为第二个数的类型
+    for (int i = 0; i < strlen(x); ++i) { //判断浮点数
+        if (x[i] == '.') {
+            type[0] = 3;
+            break;
+        }
+    }
+    for (int j = 0; j < strlen(y); ++j) {
+        if (y[j] == '.') {
+            type[1] = 3;
+            break;
+        }
+    }
+
+    if(type[0] !=3) {
+        if (x[0] == '+' || x[0] == '-') {
+            type[0] = 2;
+        } else if (x[0] >= '1' && x[0] <= '9') {
+            type[0] = 1;
+        }
+    }
+    if(type[1] !=3) {
+        if (y[0] == '+' || y[0] == '-') {
+            type[1] = 2;
+        } else if (y[0] >= '1' && y[0] <= '9') {
+            type[1] = 1;
+        }
+    }
+    if (x[0] == '0' && y[0] == '0') { //都为0，则默认为无符号
+        type[0] = type[1] = 1;
+    } else if (x[0] == '0' && y[0] != '0') { //一个为0，一个不为0，则为0大数的类型与不为0的大数相同
+        type[0] = type[1];
+    } else if (y[0] == '0' && x[0] != '0') {
+        type[1] = type[0];
+    }
+
+    return type;
 }
