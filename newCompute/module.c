@@ -21,12 +21,12 @@
  * 之后的两种数据类型的取模调用此基本模型
  */
 
-char dividend[10001],divisor[10001];   //定义全局变量供下面的程序使用
-char arr[1000000],ans[1000000];    //ans用于储存计算结果，arr储存余数
-int declen;
+char modulo_dividend[10001],modulo_divisor[10001];   //定义全局变量供下面的程序使用
+char modulo_arr[1000000],modulo_ans[1000000];    //ans用于储存计算结果，arr储存余数
+int modulo_declen;
 
 
-int Compare(char a[],char b[])     //比较字符串的大小
+int modulo_Compare(char a[],char b[])     //比较字符串的大小
 {
     int lena,lenb,i;
     lena = strlen(a);
@@ -57,7 +57,7 @@ int Compare(char a[],char b[])     //比较字符串的大小
     }
 }
 
-int judge(char ch[])         //判断字符串ch是否全为0，若全为0，返回1，否则返回0
+int modulo_judge(char ch[])         //判断字符串ch是否全为0，若全为0，返回1，否则返回0
 {
     int i,len;
     len = strlen(ch);
@@ -71,7 +71,7 @@ int judge(char ch[])         //判断字符串ch是否全为0，若全为0，返
     return 1;
 }
 
-void Sub(char a1[],char b1[])    //a1为被减数，b1为减数
+void modulo_Sub(char a1[],char b1[])    //a1为被减数，b1为减数
 {
     int lena,lenb,i,len;
     int a[1000] = {0},b[1000] = {0},d[1000]= {0};
@@ -101,51 +101,51 @@ void Sub(char a1[],char b1[])    //a1为被减数，b1为减数
     //将结果转化为字符逆着赋给数组ans
     for(i = 0;i < len;i++)
     {
-        ans[i] = d[len - i - 1] + '0';
+        modulo_ans[i] = d[len - i - 1] + '0';
     }
-    //if(judge(ans))//若差全为0，则只输出一个
-    //  strcpy(ans,"0");
+    //if(modulo_judge(modulo_ans))//若差全为0，则只输出一个
+    //  strcpy(modulo_ans,"0");
 }
 
-char* divise(char ina[],char inb[])
+char* modulo_divise(char ina[],char inb[])
 {
-    strcpy(dividend,ina);
-    strcpy(divisor,inb);
+    strcpy(modulo_dividend,ina);
+    strcpy(modulo_divisor,inb);
     char *p;
     char tmp[1000],t[1000];    //tmp储存被除数片段
     int lens,lent,i,j,k,flag = 0;
-    memset(arr,0,sizeof(arr));
-    if(judge(divisor))
+    memset(modulo_arr,0,sizeof(modulo_arr));
+    if(modulo_judge(modulo_divisor))
     {
         p = "除数不能为0!";
         return p;
     }
 
-    if(Compare(dividend,divisor) < 0)   //若被除数小于除数，则商为0，余数为被除数
+    if(modulo_Compare(modulo_dividend,modulo_divisor) < 0)   //若被除数小于除数，则商为0，余数为被除数
     {
-        strcpy(arr,dividend);
-        strcpy(ans,"0");
+        strcpy(modulo_arr,modulo_dividend);
+        strcpy(modulo_ans,"0");
     }
-    else if(!Compare(dividend,divisor)) //若两数相等，则商为1，余数为0
-        ans[0] = '1';
+    else if(!modulo_Compare(modulo_dividend,modulo_divisor)) //若两数相等，则商为1，余数为0
+        modulo_ans[0] = '1';
     else         //若被除数大于除数
     {
         j = lent = 0;
-        lens = strlen(dividend);
+        lens = strlen(modulo_dividend);
         memset(tmp,0,sizeof(tmp));
         memset(t,0,sizeof(t));
         for(i = 0;i < lens;i++)   //得到被除数切片,得到整型数组形式的商
         {                      //t的一个元素表示一次相除的商
             //printf("i = %d,j = %d\n",i,j);
-            tmp[j++] = dividend[i];
+            tmp[j++] = modulo_dividend[i];
             flag = 0;
             //printf("tmp = %s\n",tmp);
-            while(Compare(tmp,divisor) >= 0)    //可以除
+            while(modulo_Compare(tmp,modulo_divisor) >= 0)    //可以除
             {//用减法获得对应位置的商
-                Sub(tmp,divisor);
-                strcpy(tmp,ans);
+                modulo_Sub(tmp,modulo_divisor);
+                strcpy(tmp,modulo_ans);
                 //printf("new tmp = %s\n",tmp);
-                memset(ans,0,sizeof(ans));
+                memset(modulo_ans,0,sizeof(modulo_ans));
                 t[lent]++;
                 //printf("%d:lent = %d,%s\n",i,lent,t);
                 flag=1;            //对应位置有值
@@ -170,39 +170,39 @@ char* divise(char ina[],char inb[])
         }
         for(j = i;j < lent;j++)
         {
-            ans[k++] = t[j];
+            modulo_ans[k++] = t[j];
         }
-        strcpy(arr,tmp);
+        strcpy(modulo_arr,tmp);
     }
-    //if(judge(ans))
-    //  strcpy(ans,"0");
-    if(judge(arr))
-        strcpy(arr,"0");
-    p = ans;
+    //if(modulo_judge(modulo_ans))
+    //  strcpy(modulo_ans,"0");
+    if(modulo_judge(modulo_arr))
+        strcpy(modulo_arr,"0");
+    p = modulo_ans;
     return p;
 }
 
-char* modulo(char a[],char b[])
+char* modulo_modulo(char a[],char b[])
 {
-    divise(a,b);
+    modulo_divise(a,b);
     char *p;
-    p = arr;
+    p = modulo_arr;
     return p;
 }
 
-void reset()
+void modulo_reset()
 {
-    memset(dividend,0,sizeof(dividend));
-    memset(divisor,0, sizeof(divisor));
-    memset(arr,0, sizeof(arr));
-    memset(ans,0, sizeof(ans));
-    declen = 0;
+    memset(modulo_dividend,0,sizeof(modulo_dividend));
+    memset(modulo_divisor,0, sizeof(modulo_divisor));
+    memset(modulo_arr,0, sizeof(modulo_arr));
+    memset(modulo_ans,0, sizeof(modulo_ans));
+    modulo_declen = 0;
 }
 
 
 
 /*
- * 接下来开始利用构造好的除法模板进行三种除法类型的实现
+ * 接下来开始利用构造好的除法模板进行两种求余类型的实现
  */
 
 
@@ -217,10 +217,10 @@ UnsignedBigNum ModUnsignedBigNum(UnsignedBigNum a,UnsignedBigNum b)
         c.length = 0;
         return c;
     }
-    strcpy(c.numBody,modulo(a.numBody,b.numBody));
+    strcpy(c.numBody,modulo_modulo(a.numBody,b.numBody));
     c.length = strlen(c.numBody);
     c.flag = 1;
-    reset();
+    modulo_reset();
     return c;
 }
 
@@ -237,8 +237,8 @@ SignedBigNum ModSignedBigNum(SignedBigNum a,SignedBigNum b)
         c.length = 0;
         return c;
     }
-    strcpy(c.numBody,modulo(a.numBody,b.numBody));
+    strcpy(c.numBody,modulo_modulo(a.numBody,b.numBody));
     c.length = strlen(c.numBody);
-    reset();
+    modulo_reset();
     return c;
 }
