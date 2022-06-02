@@ -1,13 +1,11 @@
 //
 // Created by Dinosaur on 2022/5/27.
 //
-#pragma once
 #include "..\Model\struct.h"
 #include <string.h>
 #include "..\Utils\Utils.h"
 #include "subtraction.h"
 #include "plus.h"
-#define MAXSIZE 500
 
 UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct UnsignedBigNum y) {   //无符号减法
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
