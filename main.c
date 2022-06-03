@@ -1,22 +1,36 @@
+﻿
+#include "GUI\gui.h"
 #include <stdio.h>
-#include "newCompute/multiplication.h"
-#include "string.h"
-#include "Model/struct.h"
+#include <stdlib.h>
+#include<conio.h>
+#include <time.h>
+#include<Windows.h>
+#include "..\Utils\Utils.h"
+int main()
+{
+    //防止控制台输出乱码
+    system("chcp 65001");
+    int end=1,result;
+    while(end){
+        result=Menu();
+        switch(result){
+            case 1:{
+                int* plus=  ScanfCheck();
+                printf("%d%d",plus,plus+1);}
+                /*if(*plus==1 && *plus+1==1){
 
-int main() {
-    struct SignedBigNum a;
-    struct SignedBigNum b;
+                }*/
+                break;
+            case 2:
+                Help();
+                break;
+            case 3:
+                About();
+                break;
+            case 0:
+                end=0;break;
+        }
+    }
 
-    a.flag = 1;
-    b.flag = 1;
-    char *s1 = "123";
-
-    char *s2 = "0123";
-
-    strcpy(a.numBody, s1);
-    strcpy(b.numBody, s2);
-    a.length = strlen(s1);
-    b.length =  strlen(s2);
-    printf("%s", multiplySignedBigNum(a, b).numBody);
     return 0;
 }
