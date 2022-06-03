@@ -17,6 +17,15 @@ char *reverseString(char *str, int len) {
     return reternStr;
 }
 
+int judgeZero(char *numBody, int len) {//判断一个字符串是否全为0
+    for (int i = 0; i < len; ++i) {
+        if (numBody[i] != '0') {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 struct UnsignedBigNum multiplyUnsignedBigNum(struct UnsignedBigNum a, struct UnsignedBigNum b)//无符号大数乘法
 {
     //初始化变量
@@ -32,6 +41,7 @@ struct UnsignedBigNum multiplyUnsignedBigNum(struct UnsignedBigNum a, struct Uns
         return returnTemp;
     }
     //用于临时记录每一次单位乘法的结果
+
     struct UnsignedBigNum eachTemp;
     //临时变量长度初始化为0
     eachTemp.length = 0;
@@ -72,7 +82,7 @@ struct UnsignedBigNum multiplyUnsignedBigNum(struct UnsignedBigNum a, struct Uns
     }
 
     int ii = minNum.length - 1;
-    while (minNum.numBody[ii] == '0'&& ii >= 0)//翻转后再除去前导0
+    while (minNum.numBody[ii] == '0' && ii >= 0)//翻转后再除去前导0
     {
         minNum.length--;
         ii--;
@@ -87,8 +97,8 @@ struct UnsignedBigNum multiplyUnsignedBigNum(struct UnsignedBigNum a, struct Uns
 
     for (int i = 0; i < minNum.length; ++i)//开始遍历b，进行单次乘法
     {
-        //将临时变量长度重置为0
-        eachTemp.length = 0;
+        //将临时变量长度重置为i
+        eachTemp.length = i;
         //进位变量重置为0
         tempJinwei = 0;
 
@@ -104,13 +114,12 @@ struct UnsignedBigNum multiplyUnsignedBigNum(struct UnsignedBigNum a, struct Uns
         //最后的进位处理
         if (tempJinwei > 0)//如果进位大于0
         {
+            eachTemp.numBody[eachTemp.length] = tempJinwei + '0';
             ++eachTemp.length;
-            eachTemp.numBody[minNum.length + maxNum.length] = tempJinwei;
         }
         //还要再将0加入到临时变量中
         for (int j = 0; j < i; ++j)//
         {
-            ++eachTemp.length;
             eachTemp.numBody[j] = '0';
         }
         eachTemp.flag = 1;//临时变量的flag永远是正的
@@ -118,6 +127,14 @@ struct UnsignedBigNum multiplyUnsignedBigNum(struct UnsignedBigNum a, struct Uns
         strcpy(eachTemp.numBody, reverseString(eachTemp.numBody, eachTemp.length)); //将a的numBody翻转后给临时变量
         strcpy(returnTemp.numBody, reverseString(returnTemp.numBody, returnTemp.length)); //将a的numBody翻转后给临时变量
         //将临时变量加入总变量
+        eachTemp.numBody[eachTemp.length] = '\0';
+        if (judgeZero(eachTemp.numBody, eachTemp.length) == 0)//如果变量为0
+        {
+            eachTemp.length = 0;
+            eachTemp.flag = 0;
+        }
+        returnTemp.numBody[returnTemp.length] = '\0';
+
         returnSaveTemp = plusUnsignedBigNum(eachTemp, returnTemp);
         //再将结果翻转过来
         strcpy(returnTemp.numBody, reverseString(returnSaveTemp.numBody, returnSaveTemp.length)); //将a的numBody翻转后给临时变量
@@ -236,7 +253,7 @@ struct SignedBigNum multiplySignedBigNum(struct SignedBigNum a, struct SignedBig
     for (int i = 0; i < minNum.length; ++i)//开始遍历b，进行单次乘法
     {
         //将临时变量长度重置为0
-        eachTemp.length = 0;
+        eachTemp.length = i;
         //进位变量重置为0
         tempJinwei = 0;
 
@@ -251,13 +268,12 @@ struct SignedBigNum multiplySignedBigNum(struct SignedBigNum a, struct SignedBig
         //最后的进位处理
         if (tempJinwei > 0)//如果进位大于0
         {
+            eachTemp.numBody[eachTemp.length] = tempJinwei + '0';
             ++eachTemp.length;
-            eachTemp.numBody[minNum.length + maxNum.length] = tempJinwei;
         }
         //还要再将0加入到临时变量中
         for (int j = 0; j < i; ++j)//
         {
-            ++eachTemp.length;
             eachTemp.numBody[j] = '0';
         }
         eachTemp.flag = 1;//临时变量的flag永远是正的
@@ -265,6 +281,8 @@ struct SignedBigNum multiplySignedBigNum(struct SignedBigNum a, struct SignedBig
         strcpy(eachTemp.numBody, reverseString(eachTemp.numBody, eachTemp.length)); //将a的numBody翻转后给临时变量
         strcpy(returnTemp.numBody, reverseString(returnTemp.numBody, returnTemp.length)); //将a的numBody翻转后给临时变量
         //将临时变量加入总变量
+        eachTemp.numBody[eachTemp.length] = '\0';
+        returnTemp.numBody[returnTemp.length] = '\0';
         returnSaveTemp = plusSignedBigNum(eachTemp, returnTemp);
         //再将结果翻转过来
         strcpy(returnTemp.numBody, reverseString(returnSaveTemp.numBody, returnSaveTemp.length)); //将a的numBody翻转后给临时变量
@@ -288,6 +306,15 @@ struct SignedBigNum multiplySignedBigNum(struct SignedBigNum a, struct SignedBig
     {
         returnTemp.flag = 0;
     }
+    //判断返回结构体的符号
+    if (a.flag == -1 && b.flag == -1 || a.flag == 1 && b.flag == 1)//如果都是负数或者正数
+    {
+        returnTemp.flag = 1;
+    } else if (a.flag == -1 && b.flag == 1 || a.flag == 1 && b.flag == -1)//如果有一个为是正数，一个为负数
+    {
+        returnTemp.flag = -1;
+    }
+
     //最后再翻转一下
     strcpy(returnTemp.numBody, reverseString(returnTemp.numBody, returnTemp.length)); //将a的numBody翻转后给临时变量
     //给最后一个元素添加/0表示字符串结束
@@ -302,91 +329,107 @@ struct SignedBigNum multiplySignedBigNum(struct SignedBigNum a, struct SignedBig
     }
     return returnTemp;
 }
-//
-//
-//struct SignedBigNum multiplyFloatBigNum(struct SignedBigNum a, struct SignedBigNum b)//高精度实数大数乘法
-//{
-//    if (a.flag == 0)//如果a为0
-//    {
-//        //结果可以直接返回b
-//        return b;
-//    }
-//    if (b.flag == 0)//如果a为0
-//    {
-//        //结果可以直接返回a
-//        return a;
-//    }
-//
-//    //初始化变量
-//    //用于返回的结构体
-//    struct SignedBigNum returnTemp;
-//    //用于临时记录每一次单位乘法的结果
-//    struct SignedBigNum eachTemp;
-//    //临时变量长度初始化为0
-//    eachTemp.length = 0;
-//    //用于进位的临时变量
-//    int tempJinwei;
-//    //判断出哪个变量更长
-//    struct SignedBigNum maxNum;
-//    struct SignedBigNum minNum;
-//    if (b.length > a.length)//如果b的长度大于a
-//    {
-//        //就把b的值复制给maxNum
-//        maxNum.length = b.length;
-//        maxNum.flag = b.flag;
-//        strcpy(maxNum.numBody, b.numBody);
-//        //把a的值复制给minNum
-//        minNum.length = a.length;
-//        minNum.flag = a.flag;
-//        strcpy(minNum.numBody, a.numBody);
-//
-//    } else//否则
-//    {
-//        //就把a的值复制给maxNum
-//        maxNum.length = a.length;
-//        maxNum.flag = a.flag;
-//        strcpy(maxNum.numBody, a.numBody);
-//        //把b的值复制给minNum
-//        minNum.length = b.length;
-//        minNum.flag = b.flag;
-//        strcpy(minNum.numBody, b.numBody);
-//    }
-//
-//    for (int i = 0; i < minNum.length; ++i)//开始遍历b，进行单次乘法
-//    {
-//        //将临时变量长度重置为0
-//        eachTemp.length = 0;
-//        //进位变量重置为0
-//        tempJinwei = 0;
-//
-//        for (int j = minNum.length; j < minNum.length + maxNum.length; ++j) //开始遍历a，进行单次乘法的细致步骤
-//        {
-//            eachTemp.numBody[i] = (tempJinwei + '0') + (a.numBody[j] - '0') * (b.numBody[i] - '0') % 10 + '0';
-//            tempJinwei = (a.numBody[j] - '0') * (b.numBody[i] - '0') / 10;
-//        }
-//
-//        //最后的进位处理
-//        if (tempJinwei > 0)//如果进位大于0
-//        {
-//            eachTemp.numBody[minNum.length + maxNum.length] = tempJinwei;
-//        }
-//        //还要再将0加入到临时变量中
-//        for (int j = 0; j < i; ++j) //
-//        {
-//            eachTemp.numBody[j] = '0';
-//        }
-//        //将临时变量加入总变量
-//        strcpy(returnTemp.numBody, plusSignedBigNum(eachTemp, returnTemp).numBody);
-//    }
-//
-//    //判断返回结构体的符号
-//    if (a.flag == -1 && b.flag == -1 || a.flag == 1 && b.flag == 1)//如果都是负数或者正数
-//    {
-//        returnTemp.flag = 1;
-//    } else if (a.flag == -1 && b.flag == 1 || a.flag == 1 && b.flag == -1)//如果有一个为是正数，一个为负数
-//    {
-//        returnTemp.flag = -1;
-//    }
-//
-//    return returnTemp;
-//}
+
+
+struct FloatBigNum multiplyFloatBigNum(struct FloatBigNum a, struct FloatBigNum b)//高精度实数大数乘法
+{
+    //初始化变量
+    //用于返回的结构体
+    struct FloatBigNum returnTemp;
+    //初始化返回结构体
+    returnTemp.lengthDecimal = 1;
+    returnTemp.lengthInteger = 1;
+    strcpy(returnTemp.decimal, "0");
+    strcpy(returnTemp.integer, "0");
+
+    returnTemp.flag = 0;
+    if (b.flag == 0 || a.flag == 0)//如果a为0或者b为0
+    {
+        //结果可以直接返回
+        return returnTemp;
+    }//
+    else if (b.lengthDecimal + b.lengthInteger >= MAXSIZE || a.lengthDecimal + a.lengthInteger >= MAXSIZE) {
+        returnTemp.flag = -1;
+        return returnTemp;
+    }
+
+    //用于临时记录每一次单位乘法的结果
+    struct FloatBigNum eachTemp;
+    //临时变量长度初始化为0
+    eachTemp.lengthInteger = 0;
+    eachTemp.lengthDecimal = 0;
+    //用于进位的临时变量
+    int tempJinwei;
+    //将实数运算转化成有符号整数运算
+    struct SignedBigNum maxNum;
+    struct SignedBigNum minNum;
+    //用于保存小数的位数
+    int maxNumDecimalLength;
+    int minNumDecimalLength;
+    if (b.lengthDecimal + b.lengthInteger > a.lengthDecimal + a.lengthInteger)//如果b的长度大于a
+    {
+        //就把b的值复制给maxNum
+        maxNum.length = b.lengthDecimal + b.lengthInteger;
+        maxNum.flag = b.flag;
+        maxNumDecimalLength = b.lengthDecimal;
+        //先把小数部分反转后复制进去
+        strcpy(maxNum.numBody, reverseString(b.decimal, b.lengthDecimal));
+        //再把整数部分反转后复制进去
+        for (int i = b.lengthDecimal; i < b.lengthDecimal + b.lengthInteger; ++i) {
+            maxNum.numBody[i] = b.integer[b.lengthInteger - 1 - (i - b.lengthDecimal)];
+        }
+
+        //把a的值复制给minNum
+        minNum.length = a.lengthDecimal + a.lengthInteger;;
+        minNum.flag = a.flag;
+        //把小数的值保存在临时变量中
+        minNumDecimalLength = a.lengthDecimal;
+        strcpy(minNum.numBody, reverseString(a.decimal, a.lengthDecimal));
+        //再把整数部分反转后复制进去
+        for (int i = a.lengthDecimal; i < a.lengthDecimal + a.lengthInteger; ++i) {
+            minNum.numBody[i] = a.integer[a.lengthInteger - 1 - (i - a.lengthDecimal)];
+        }
+    } else//否则
+    {
+        //就把b的值复制给maxNum
+        maxNum.length = a.lengthDecimal + a.lengthInteger;
+        maxNum.flag = a.flag;
+        //把小数的值保存在临时变量中
+        maxNumDecimalLength = a.lengthDecimal;
+        //先把小数部分反转后复制进去
+        strcpy(maxNum.numBody, reverseString(a.decimal, a.lengthDecimal));
+        //再把整数部分反转后复制进去
+        for (int i = a.lengthDecimal; i < a.lengthDecimal + a.lengthInteger; ++i) {
+            maxNum.numBody[i] = a.integer[a.lengthInteger - 1 - (i - a.lengthDecimal)];
+        }
+
+        //把a的值复制给minNum
+        minNum.length = b.lengthDecimal + b.lengthInteger;;
+        minNum.flag = b.flag;
+        minNumDecimalLength = b.lengthDecimal;
+        strcpy(minNum.numBody, reverseString(b.decimal, b.lengthDecimal));
+        //再把整数部分反转后复制进去
+        for (int i = b.lengthDecimal; i < b.lengthDecimal + b.lengthInteger; ++i) {
+            minNum.numBody[i] = b.integer[b.lengthInteger - 1 - (i - b.lengthDecimal)];
+        }
+    }
+
+    //这边可以直接调用有符号整数的乘法
+    struct SignedBigNum returnSaveTemp;//用于临时保存有符号数返回的结果
+
+    //需要翻转一下
+    strcpy(minNum.numBody, reverseString(minNum.numBody, minNum.length)); //将a的numBody翻转后给临时变量
+    strcpy(maxNum.numBody, reverseString(maxNum.numBody, maxNum.length)); //将a的numBody翻转后给临时变量
+    returnSaveTemp = multiplySignedBigNum(minNum, maxNum);
+
+    returnTemp.flag = returnSaveTemp.flag;
+    returnTemp.lengthDecimal = maxNumDecimalLength + minNumDecimalLength;
+    returnTemp.lengthInteger = returnSaveTemp.length - returnTemp.lengthDecimal;
+    for (int i = 0; i < returnSaveTemp.length - returnTemp.lengthDecimal; ++i) {
+        returnTemp.integer[i] = returnSaveTemp.numBody[i];
+    }
+    for (int i = returnSaveTemp.length - returnTemp.lengthDecimal; i < returnSaveTemp.length; ++i) {
+        returnTemp.decimal[i - returnSaveTemp.length + returnTemp.lengthDecimal] = returnSaveTemp.numBody[i];
+    }
+    return returnTemp;
+}
