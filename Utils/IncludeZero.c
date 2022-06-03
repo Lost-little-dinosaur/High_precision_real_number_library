@@ -7,6 +7,22 @@
 #include "IncludeZero.h"
 
 #include "..\newCompute\plus.h"
+
+int cmpUnsignedBigNum(UnsignedBigNum x, UnsignedBigNum y) {//有符号数符号一致时简单比较
+    int flag;
+    if (x.length > y.length)
+        flag = 1;
+    else if (x.length == y.length) {
+        if (strcmp(x.numBody, y.numBody) >= 0)
+            flag = 1;
+        else
+            flag = 0;
+    } else
+        flag = 0;
+
+    return flag;
+}
+
 struct UnsignedBigNum IncludeZero (struct UnsignedBigNum x, struct UnsignedBigNum y) {//无符号减法不去掉前导0，方便浮点运算
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
     struct UnsignedBigNum r;
