@@ -170,8 +170,12 @@ struct UnsignedBigNum multiplyUnsignedBigNum(struct UnsignedBigNum a, struct Uns
     //给最后一个元素添加/0表示字符串结束
     if (returnTemp.length >= MAXSIZE)//如果超出，则报溢出，直接退出
     {
-        printf("Over Flow!");
-        exit(0);//TODO：溢出不直接退出
+        printf("Over Flow!\n");
+        returnTemp.flag = 0;
+        returnTemp.length = 1;
+        returnTemp.numBody[0] = '0';
+        returnTemp.numBody[1] = '\0';
+        return returnTemp;//TODO：溢出不直接退出
     }//
     else//
     {
@@ -320,8 +324,12 @@ struct SignedBigNum multiplySignedBigNum(struct SignedBigNum a, struct SignedBig
     //给最后一个元素添加/0表示字符串结束
     if (returnTemp.length >= MAXSIZE)//如果超出，则报溢出，直接退出
     {
-        printf("Over Flow!");
-        exit(0);//TODO：溢出不直接退出
+        printf("Over Flow!\n");
+        returnTemp.flag = 0;
+        returnTemp.length = 1;
+        returnTemp.numBody[0] = '0';
+        returnTemp.numBody[1] = '\0';
+        return returnTemp;//TODO：溢出不直接退出
     }//
     else//
     {
@@ -444,6 +452,7 @@ struct UnsignedBigNum exponentiationUnsignedBigNum(struct UnsignedBigNum a, int 
     if (a.flag == 0) {
         returnTemp.flag = 0;
         returnTemp.numBody[0] = '0';
+        returnTemp.numBody[1] = '\0';
         return returnTemp;
     }
     if (power < 0) //如果是负数则输出错误信息
@@ -460,6 +469,14 @@ struct UnsignedBigNum exponentiationUnsignedBigNum(struct UnsignedBigNum a, int 
         strcpy(returnTemp.numBody, returnSaveTemp.numBody);
         returnTemp.flag = returnSaveTemp.flag;
         returnTemp.length = returnSaveTemp.length;
+        if (returnTemp.length > MAXSIZE - 20000) {
+            printf("Over Flow!\n");
+            returnTemp.flag = 0;
+            returnTemp.length = 1;
+            returnTemp.numBody[0] = '0';
+            returnTemp.numBody[1] = '\0';
+            return returnTemp;
+        }
     }
 
     return returnTemp;
@@ -475,6 +492,7 @@ struct SignedBigNum exponentiationSignedBigNum(struct SignedBigNum a, int power)
     if (a.flag == 0) {
         returnTemp.flag = 0;
         returnTemp.numBody[0] = '0';
+        returnTemp.numBody[1] = '\0';
         return returnTemp;
     }
     if (power < 0) //如果是负数则输出错误信息
@@ -491,6 +509,14 @@ struct SignedBigNum exponentiationSignedBigNum(struct SignedBigNum a, int power)
         strcpy(returnTemp.numBody, returnSaveTemp.numBody);
         returnTemp.flag = returnSaveTemp.flag;
         returnTemp.length = returnSaveTemp.length;
+        if (returnTemp.length > MAXSIZE - 20000) {
+            printf("Over Flow!\n");
+            returnTemp.flag = 0;
+            returnTemp.length = 1;
+            returnTemp.numBody[0] = '0';
+            returnTemp.numBody[1] = '\0';
+            return returnTemp;
+        }
     }
 
     return returnTemp;
@@ -527,6 +553,17 @@ struct FloatBigNum exponentiationFloatBigNum(struct FloatBigNum a, int power) {
         returnTemp.flag = returnSaveTemp.flag;
         returnTemp.lengthDecimal = returnSaveTemp.lengthDecimal;
         returnTemp.lengthInteger = returnSaveTemp.lengthInteger;
+        if (returnTemp.lengthDecimal > MAXSIZE - 20000 || returnTemp.lengthInteger > MAXSIZE - 20000) {
+            printf("Over Flow!\n");
+            returnTemp.flag = 0;
+            returnTemp.lengthDecimal = 1;
+            returnTemp.lengthInteger = 1;
+            returnTemp.integer[0] = '0';
+            returnTemp.decimal[0] = '0';
+            returnTemp.integer[1] = '\0';
+            returnTemp.decimal[1] = '\0';
+            return returnTemp;
+        }
     }
 
     return returnTemp;
@@ -559,9 +596,17 @@ struct UnsignedBigNum factorialUnsignedBigNum(int factorialNum) {//只有非负�
             strcpy(returnTemp.numBody, returnSaveTemp2.numBody);
             returnTemp.flag = returnSaveTemp2.flag;
             returnTemp.length = returnSaveTemp2.length;
-            returnSaveTemp1.numBody[returnSaveTemp1.length]='\0';
-
+            returnSaveTemp1.numBody[returnSaveTemp1.length] = '\0';
             returnSaveTemp1 = plusUnsignedBigNum(returnSaveTemp1, tempOne);//加一
+            if (returnTemp.length > MAXSIZE - 20000) {
+                printf("Over Flow!\n");
+                returnTemp.flag = 0;
+                returnTemp.length = 1;
+                returnTemp.numBody[0] = '0';
+                returnTemp.numBody[1] = '\0';
+                return returnTemp;
+
+            }
         }
     }
 
