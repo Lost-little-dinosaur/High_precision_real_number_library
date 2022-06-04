@@ -13,6 +13,7 @@ struct UnsignedBigNum plusUnsignedBigNum(struct UnsignedBigNum x, struct Unsigne
 
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
     struct UnsignedBigNum r;
+    r.flag=1;
     memset(r.numBody, 0, sizeof(r.numBody));
     int len1 = x.length, len2 = y.length, len3 = len1 > len2 ? len1 : len2;
     int i, j, k, m, n, flag = 0;
@@ -64,6 +65,8 @@ struct UnsignedBigNum plusUnsignedBigNum(struct UnsignedBigNum x, struct Unsigne
         //printf("%d", r[i1]);
     }
     r.length = strlen(r.numBody);
+    if(r.numBody=="0")
+        r.flag=0;
     return r;
 }
 
