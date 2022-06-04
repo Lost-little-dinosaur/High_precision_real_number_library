@@ -8,7 +8,7 @@
 
 #include "..\newCompute\plus.h"
 
-int cmpUnsignedBigNum(UnsignedBigNum x, UnsignedBigNum y) {//有符号数符号一致时简单比较
+int cmpUnsignedBigNum_IZ(UnsignedBigNum x, UnsignedBigNum y) {//有符号数符号一致时简单比较
     int flag;
     if (x.length > y.length)
         flag = 1;
@@ -30,7 +30,7 @@ struct UnsignedBigNum IncludeZero (struct UnsignedBigNum x, struct UnsignedBigNu
     int len1 = x.length, len2 = y.length, len3 = len1 > len2 ? len1 : len2;
     //printf("%d %d\n",len1,len2);
     int i, j, k, m, n, flag = 0, sign;
-    sign = cmpUnsignedBigNum(x, y);
+    sign = cmpUnsignedBigNum_IZ(x, y);
     //printf("sign=%d\n", sign);
 
     for (i = len1 - 1, k = 0; i >= 0, k < len1; i--, k++) {
@@ -116,7 +116,7 @@ struct SignedBigNum IncludeZeroSPlus(struct SignedBigNum x,struct SignedBigNum y
         result.flag = x.flag;
     } else if (x.flag == 1 && y.flag == -1) {
         int sign;
-        sign = cmpUnsignedBigNum(c, d);
+        sign = cmpUnsignedBigNum_IZ(c, d);
         if (sign == 1) {
             result.flag = 1;
             e = IncludeZero(c, d);
@@ -134,7 +134,7 @@ struct SignedBigNum IncludeZeroSPlus(struct SignedBigNum x,struct SignedBigNum y
         }
     } else if (x.flag == -1 && y.flag == 1) {
         int sign;
-        sign = cmpUnsignedBigNum(c, d);
+        sign = cmpUnsignedBigNum_IZ(c, d);
         if (sign == 1) {
             result.flag = -1;
             e =IncludeZero(c, d);
@@ -169,7 +169,7 @@ struct SignedBigNum IncludeZeroSignedSub(struct SignedBigNum x,struct SignedBigN
     if (x.flag == 1 && y.flag == 1) {//同+
         e = IncludeZero(c, d);
         strcpy(result.numBody, e.numBody);
-        if(cmpUnsignedBigNum(c,d)==1) {
+        if(cmpUnsignedBigNum_IZ(c,d)==1) {
             result.flag = 1;
         }
         else {
@@ -183,7 +183,7 @@ struct SignedBigNum IncludeZeroSignedSub(struct SignedBigNum x,struct SignedBigN
     } else if (x.flag == -1 && y.flag == -1) {//同-
         e = IncludeZero(c, d);
         strcpy(result.numBody, e.numBody);
-        if(cmpUnsignedBigNum(c,d)==1) {
+        if(cmpUnsignedBigNum_IZ(c,d)==1) {
             result.flag = -1;
         }
         else {
@@ -202,7 +202,7 @@ struct SignedBigNum IncludeZeroSignedSub(struct SignedBigNum x,struct SignedBigN
         result.flag = x.flag;
     } else if (x.flag == 1 && y.flag == -1) {
         int sign;
-        sign = cmpUnsignedBigNum(c, d);
+        sign = cmpUnsignedBigNum_IZ(c, d);
         if (sign == 1) {
             result.flag = 1;
             e = plusUnsignedBigNum(c, d);
@@ -220,7 +220,7 @@ struct SignedBigNum IncludeZeroSignedSub(struct SignedBigNum x,struct SignedBigN
         }
     } else if (x.flag == -1 && y.flag == 1) {
         int sign;
-        sign = cmpUnsignedBigNum(c, d);
+        sign = cmpUnsignedBigNum_IZ(c, d);
         if (sign == 1) {
             result.flag = -1;
             e = plusUnsignedBigNum(c, d);
