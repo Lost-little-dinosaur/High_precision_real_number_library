@@ -8,10 +8,13 @@
 char addSignedBigNumFlag(struct SignedBigNum x);
 int judgeFloatBigNum (char x[]);
 int judgeSignedBigNum (char x[]);
-struct UnsignedBigNum removeSigndBigNumFlag(char x[]);
+struct UnsignedBigNum removeSignedBigNumFlag(char x[]);
 char  *sepBigNumDe (char *x);
 char  *sepBigNumIn (char *x);
 int judgeOverflow(char num1[],char num2[]);
 int *judgeType(char x[],char y[]);
+struct FloatBigNum unToFloat(int type[],char x[],char y[]);
+struct FloatBigNum snToFloat(int type[],char x[],char y[]);
+struct SignedBigNum unToSigned(int type[],char x[],char y[]);
 
 #endif //HIGH_PRECISION_REAL_NUMBER_LIBRARY_UTILS_H
