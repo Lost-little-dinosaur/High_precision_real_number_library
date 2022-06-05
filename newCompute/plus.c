@@ -70,11 +70,11 @@ struct UnsignedBigNum plusUnsignedBigNum(struct UnsignedBigNum x, struct Unsigne
     return r;
 }
 
-struct SignedBigNum plusSignedBigNum(struct SignedBigNum x, struct SignedBigNum y) {
+struct SignedBigNum plusSignedBigNum(struct SignedBigNum x,struct SignedBigNum y) {
     //SigndBigNum b;
     //SigndBigNum a;
     struct SignedBigNum result;
-    memset(result.numBody, 0, sizeof(result.numBody));
+    memset(result.numBody,0,sizeof(result.numBody));
     struct UnsignedBigNum c, d, e;//result不带符号
     strcpy(c.numBody, x.numBody);//方便后面无符号加法调用
     strcpy(d.numBody, y.numBody);
@@ -82,22 +82,23 @@ struct SignedBigNum plusSignedBigNum(struct SignedBigNum x, struct SignedBigNum 
     d.length = strlen(y.numBody);
     //a.flag = x.flag;
     //b.flag = y.flag;
-    if (x.flag == 1 && y.flag == 1) {   //同正
+    if (x.flag == 1 && y.flag == 1) {//同+
         e = plusUnsignedBigNum(c, d);
         strcpy(result.numBody, e.numBody);
         //printf("%s\n",e.numBody);
+
         result.flag = 1;
         result.length = strlen(result.numBody);
-    } else if (x.flag == -1 && y.flag == -1) {  //同负
+    } else if (x.flag == -1 && y.flag == -1) {//同-
         e = plusUnsignedBigNum(c, d);
         strcpy(result.numBody, e.numBody);
         result.flag = -1;
         result.length = strlen(result.numBody);
-    } else if (x.flag == 0) {   //a为0
+    } else if (x.flag == 0) {//a为0
         strcpy(result.numBody, y.numBody);
         result.length = strlen(y.numBody);
         result.flag = y.flag;
-    } else if (y.flag == 0) {   //b为0
+    } else if (y.flag == 0) {//b为0
         strcpy(result.numBody, x.numBody);
         result.length = strlen(x.numBody);
         result.flag = x.flag;

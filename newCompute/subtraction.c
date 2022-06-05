@@ -7,7 +7,7 @@
 #include "subtraction.h"
 #include "plus.h"
 
-int cmpUnsignedBigNum(UnsignedBigNum x, UnsignedBigNum y) {//有符号数符号一致时简单比较
+int cmpUnsignedBigNum(struct UnsignedBigNum x, struct UnsignedBigNum y) {
     int flag;
     if (x.length > y.length)
         flag = 1;
@@ -22,7 +22,7 @@ int cmpUnsignedBigNum(UnsignedBigNum x, UnsignedBigNum y) {//有符号数符号�
     return flag;
 }
 
-UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct UnsignedBigNum y) {   //无符号减法
+struct UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct UnsignedBigNum y) {
     int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
     struct UnsignedBigNum r;
     memset(r.numBody, 0, sizeof(r.numBody));
@@ -32,7 +32,7 @@ UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct UnsignedBigNum
     sign = cmpUnsignedBigNum(x, y);
     //printf("sign=%d\n", sign);
 
-    for (i = len1 - 1, k = 0; i >= 0, k < len1; i--, k++) { //逆序放入两个数组
+    for (i = len1 - 1, k = 0; i >= 0, k < len1; i--, k++) {
         a[k] = x.numBody[i] - '0';
         //printf("%d ",a[k]);
     }
@@ -40,7 +40,7 @@ UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct UnsignedBigNum
     for (j = len2 - 1, m = 0; j >= 0, m < len2; j--, m++) {
         b[m] = y.numBody[j] - '0';
         //printf("%d ",b[m]);
-    }
+    }//逆序放入两个数组
 
     /*for (int i = 0; i < len1; ++i) {
         printf("%d", a[i]);
@@ -103,9 +103,9 @@ UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct UnsignedBigNum
             }
             //printf("%c ", r.numBody[j]);
         }
-    } else {
+    } else
         strcpy(r.numBody, "0");
-    }
+
     r.length = strlen(r.numBody);
     return r;
 }
