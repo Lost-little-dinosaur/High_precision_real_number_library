@@ -469,7 +469,7 @@ struct UnsignedBigNum exponentiationUnsignedBigNum(struct UnsignedBigNum a, int 
         strcpy(returnTemp.numBody, returnSaveTemp.numBody);
         returnTemp.flag = returnSaveTemp.flag;
         returnTemp.length = returnSaveTemp.length;
-        if (returnTemp.length > MAXSIZE - 20000) {
+        if (returnTemp.length > MAXSIZE - MAXSIZEBUFF) {
             printf("Over Flow!\n");
             returnTemp.flag = 0;
             returnTemp.length = 1;
@@ -509,7 +509,7 @@ struct SignedBigNum exponentiationSignedBigNum(struct SignedBigNum a, int power)
         strcpy(returnTemp.numBody, returnSaveTemp.numBody);
         returnTemp.flag = returnSaveTemp.flag;
         returnTemp.length = returnSaveTemp.length;
-        if (returnTemp.length > MAXSIZE - 20000) {
+        if (returnTemp.length > MAXSIZE - MAXSIZEBUFF) {
             printf("Over Flow!\n");
             returnTemp.flag = 0;
             returnTemp.length = 1;
@@ -553,7 +553,7 @@ struct FloatBigNum exponentiationFloatBigNum(struct FloatBigNum a, int power) {
         returnTemp.flag = returnSaveTemp.flag;
         returnTemp.lengthDecimal = returnSaveTemp.lengthDecimal;
         returnTemp.lengthInteger = returnSaveTemp.lengthInteger;
-        if (returnTemp.lengthDecimal > MAXSIZE - 20000 || returnTemp.lengthInteger > MAXSIZE - 20000) {
+        if (returnTemp.lengthDecimal > MAXSIZE - MAXSIZEBUFF || returnTemp.lengthInteger > MAXSIZE - MAXSIZEBUFF) {
             printf("Over Flow!\n");
             returnTemp.flag = 0;
             returnTemp.lengthDecimal = 1;
@@ -598,7 +598,7 @@ struct UnsignedBigNum factorialUnsignedBigNum(int factorialNum) {//只有非负�
             returnTemp.length = returnSaveTemp2.length;
             returnSaveTemp1.numBody[returnSaveTemp1.length] = '\0';
             returnSaveTemp1 = plusUnsignedBigNum(returnSaveTemp1, tempOne);//加一
-            if (returnTemp.length > MAXSIZE - 20000) {
+            if (returnTemp.length > MAXSIZE - MAXSIZEBUFF) {
                 printf("Over Flow!\n");
                 returnTemp.flag = 0;
                 returnTemp.length = 1;
