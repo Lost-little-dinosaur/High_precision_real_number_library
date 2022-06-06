@@ -23,7 +23,7 @@ int cmpUnsignedBigNum(struct UnsignedBigNum x, struct UnsignedBigNum y) {
 }
 
 struct UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct UnsignedBigNum y) {
-    int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1];
+    int a[MAXSIZE], b[MAXSIZE], result[MAXSIZE + 1]={0};
     struct UnsignedBigNum r;
     memset(r.numBody, 0, sizeof(r.numBody));
     int len1 = x.length, len2 = y.length, len3 = len1 > len2 ? len1 : len2;
@@ -43,14 +43,14 @@ struct UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct Unsigne
     }//逆序放入两个数组
 
     /*for (int i = 0; i < len1; ++i) {
-        printf("%d", a[i]);
+        printf("%d ", a[i]);
     }
     printf("\n");
     for (int j = 0; j < len2; ++j) {
-        printf("%d", b[j]);
+        printf("%d ", b[j]);
     }
-    printf("\n");
-*/
+    printf("\n");*/
+
     if (len1 < len2) {
         for (i = len1; i < len2; ++i) {
             a[i] = 0;
@@ -77,7 +77,7 @@ struct UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct Unsigne
             } else
                 flag = 0;
             result[i] = a[i] - b[i];
-            //printf("\n%d=%d ",i,result[i]);
+            //printf("\n%d=%d\n ",i,result[i]);
         }//逆序结果
     } else {
         for (i = 0; i < len3; ++i) {
@@ -91,22 +91,27 @@ struct UnsignedBigNum subUnsignedBigNum (struct UnsignedBigNum x, struct Unsigne
             //printf("\n%d=%d ",i,result[i]);
         }
     }
-
+    int l;
+    for (l = MAXSIZE; l >=0 ; --l) {
+        if(result[l]!=0)
+            break;
+    }
+    //printf("l=%d\n",l);
+    len3=l+1;
     char tmp[1005];
     memset(r.numBody, 0, sizeof(r.numBody));
     for (i = len3 - 1; i >= 0 && result[i] == 0; --i);
     if (i >= 0) {
         for (j = 0; i >= 0, j < len3; --i, ++j) {
             tmp[j] = result[i] + '0';
-            if (tmp[j] >= '0' && tmp[j] <= '9') {
-                r.numBody[j] = tmp[j];
-            }
+            r.numBody[j] = tmp[j];
+
             //printf("%c ", r.numBody[j]);
         }
     } else
         strcpy(r.numBody, "0");
-
     r.length = strlen(r.numBody);
+    r.numBody[r.length]='\0';
     return r;
 }
 
