@@ -592,6 +592,9 @@ struct UnsignedBigNum factorialUnsignedBigNum(int factorialNum) {//只有非负�
         return returnTemp;
     } else {
         for (int i = 0; i < factorialNum - 1; ++i) {
+            if (i % 100 == 0) {
+                printf("%d\n", i);
+            }
             returnSaveTemp2 = multiplyUnsignedBigNum(returnSaveTemp1, returnTemp);
             strcpy(returnTemp.numBody, returnSaveTemp2.numBody);
             returnTemp.flag = returnSaveTemp2.flag;

@@ -31,7 +31,9 @@ int test() {
     printf("7：求阶乘\n\n");
     printf("8：求余\n\n");
     printf("9：验证哥德巴赫猜想\n\n");
-    printf("\n请输入您的选择(1/2/3/4/5/6/7/8/9)：\n");
+    printf("0：退出程序\n\n");
+
+    printf("\n请输入您的选择(1/2/3/4/5/6/7/8/9/0)：\n");
     scanf("%d", &choise);
 
     if (choise == 1) {
@@ -42,18 +44,19 @@ int test() {
         return 3;
     } else if (choise == 4) {
         return 4;
-    }else if (choise == 5) {
+    } else if (choise == 5) {
         return 5;
     } else if (choise == 6) {
         return 6;
     } else if (choise == 7) {
         return 7;
-    }else if (choise == 8) {
+    } else if (choise == 8) {
         return 8;
     } else if (choise == 9) {
         return 9;
-    }
-     else {
+    } else if (choise == 0) {
+        return 0;
+    } else {
         printf("输入错误，请重新输入...");
         Sleep(3);
         goto start;
@@ -61,13 +64,11 @@ int test() {
 }
 
 
-
-
 int main() {
     system("chcp 65001");
-    int end=0;
-    while(end!=1) {
-    int flag = test();
+    int end = 0;
+    while (end != 1) {
+        int flag = test();
 
         switch (flag) {
             case 1:
@@ -97,6 +98,10 @@ int main() {
             case 9:
                 gdbh();
                 break;
+            case 0:
+                printf("\n感谢使用，再见！\n");
+                sleep(1);
+                exit(0);
         }
     }
 //    if (test() == 1) {
