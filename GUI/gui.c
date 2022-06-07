@@ -45,21 +45,19 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
 
     printf("请输入第二个大数：");
     scanf("%s", &num2);
-    if(num1[0]=='+'&&num2[0]!='+'&&num2[0]!='-'||num1[0]=='-'&&num2[0]!='+'&&num2[0]!='-')
-    {
-        strcpy(num2+1,num2);
-        num2[0]='+';
+    if (num1[0] == '+' && num2[0] != '+' && num2[0] != '-' || num1[0] == '-' && num2[0] != '+' && num2[0] != '-') {
+        strcpy(num2 + 1, num2);
+        num2[0] = '+';
     }
-    if(num2[0]=='+'&&num1[0]!='+'&&num1[0]!='-'||num2[0]=='-'&&num1[0]!='+'&&num1[0]!='-')
-    {
-        strcpy(num1+1,num1);
-        num1[0]='+';
+    if (num2[0] == '+' && num1[0] != '+' && num1[0] != '-' || num2[0] == '-' && num1[0] != '+' && num1[0] != '-') {
+        strcpy(num1 + 1, num1);
+        num1[0] = '+';
     }
-    printf("已接受输入");
+//    printf("已接受输入");
 
     flag = judgeOverflow(num1, num2);
 
-    printf("%d", flag);
+//    printf("%d", flag);
     if (flag == -1) {
         printf("稍等片刻\n");
         printf("ERROR!超过数据范围！\n 按任意键返回上级菜单");
@@ -99,6 +97,7 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
         } else if (result == 4) {
             returnUB = DiviseUnsignedBigNum(x, y);
         } else if (result == 5) {//返回的东西不一样！！！！！！！
+            printf("\n下面这个数更大：\n");
             int B = compareUnsignedBigNum(x, y);
             if (B >= 0) {
                 returnUB = x;
@@ -157,6 +156,7 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
             returnSB = DiviseSignedBigNum(x, y);
         } else if (result == 5) {
             int B = compareSignedBigNum(x, y);
+            printf("\n下面这个数更大：\n");
             if (B >= 0) {
                 returnSB = x;
             } else {
@@ -181,7 +181,7 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
         }
         printf("%s", returnSB.numBody);
 
-        printf("按任意键返回上级菜单");
+        printf("\n按任意键返回上级菜单\n");
         sleep(1);
         char ch = _getch();
         system("cls");
@@ -195,13 +195,13 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
 
 
     else if (plus[0] == 3 && plus[1] == 3) {//浮点数
-        if(num1[0]!='+'&&num1[0]!='-'){
-            strcpy(num1+1,num1);
-            num1[0]='+';
+        if (num1[0] != '+' && num1[0] != '-') {
+            strcpy(num1 + 1, num1);
+            num1[0] = '+';
         }
-        if(num2[0]!='+'&&num2[0]!='-'){
-            strcpy(num2+1,num2);
-            num2[0]='+';
+        if (num2[0] != '+' && num2[0] != '-') {
+            strcpy(num2 + 1, num2);
+            num2[0] = '+';
         }
         FloatBigNum x = FloattoStruct(num1);
         FloatBigNum y = FloattoStruct(num2);
@@ -215,6 +215,7 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
         } else if (result == 4) {
             returnFB = DiviseFloatBigNum(x, y);
         } else if (result == 5) {
+            printf("\n下面这个数更大：\n");
             int B = compareFloatBigNum(x, y);
             if (B >= 0) {
                 returnFB = x;
@@ -230,17 +231,17 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
         if (returnFB.flag == -1) {
             printf("-");
         }
-        printf("打印一下");
+        printf("\n结果为：\n");
         printf("%s.%s", returnFB.integer, returnFB.decimal);
 
-        printf("按任意键返回上级菜单");
+        printf("\n按任意键返回上级菜单\n");
         sleep(1);
         char ch = _getch();
         system("cls");
     }
 }
-void gdbh()
-{
+
+void gdbh() {
     system("cls");
 
     char num1[MAXSIZE * 10] = "0";
@@ -251,13 +252,13 @@ void gdbh()
     solveGoldbachConjectureAll(x);
     printf("\n");
 
-    printf("按任意键返回上级菜单");
+    printf("\n按任意键返回上级菜单\n");
     sleep(1);
     char ch = _getch();
     system("cls");
 }
-void jc()
-{
+
+void jc() {
     system("cls");
 
     char num1[MAXSIZE * 10] = "0";
@@ -265,14 +266,15 @@ void jc()
     printf("请输入一个大整数：");
     scanf("%s", &num1);
     int factorialNum = atoi(num1);
-    UnsignedBigNum x =factorialUnsignedBigNum(factorialNum);
-    printf("\n%s\n",x.numBody);
+    UnsignedBigNum x = factorialUnsignedBigNum(factorialNum);
+    printf("\n%s\n", x.numBody);
 
-    printf("按任意键返回上级菜单");
+    printf("\n按任意键返回上级菜单\n");
     sleep(1);
     char ch = _getch();
     system("cls");
 }
+
 struct SignedBigNum SignedtoStruct(char a[]) {
 
     SignedBigNum x;
@@ -303,7 +305,7 @@ struct FloatBigNum FloattoStruct(char a[]) {
     FloatBigNum x;
 //    scanf("%s", &a);
     sepBigNumIn(a, x.integer);
-    sepBigNumDe(a,x.decimal);
+    sepBigNumDe(a, x.decimal);
     x.lengthInteger = strlen(x.integer);
     x.lengthDecimal = strlen(x.decimal);
 
