@@ -14,45 +14,103 @@
 #include "newCompute\plus.h"
 #include "newCompute\subtraction.h"
 
-int width = 50, height = 30;
-
 int test() {
+    system("chcp 65001");
     int choise;
     start:
     system("cls");
-    GotoXY(2 * (width / 3), height / 3);
-    printf("欢迎来到贪吃蛇小游戏！\n\n");
-    GotoXY(2 * (width / 3), height / 2);
-    printf("1：开始游戏\n");
-    GotoXY(2 * (width / 3), height / 2 + 2);
-    printf("2：系统设置\n");
-    GotoXY(2 * (width / 3), height / 2 + 4);
-    printf("3：退出\n");
-    GotoXY(2 * (width / 3), height / 2 + 6);
-    printf("请输入您的选择(1/2/3)：\n");
-    while (1) {
-        choise = getch(); //读取键值
-        if (choise == 49) {
-            return 1;
-        } else if (choise == 50) {
-            return 2;
-        } else if (choise == 51) {
-            return 3;
-        } else {
-            printf("输入错误，请重新输入...");
-            Sleep(300);
-            goto start;
-        }
 
+    printf("\n欢迎来到大数计算程序！\n\n");
+
+    printf("1：加法\n\n");
+    printf("2：减法\n\n");
+    printf("3：乘法\n\n");
+    printf("4：除法\n\n");
+    printf("5：比较\n\n");
+    printf("6：求幂\n\n");
+    printf("7：求阶乘\n\n");
+    printf("8：求余\n\n");
+    printf("9：验证哥德巴赫猜想\n\n");
+    printf("\n请输入您的选择(1/2/3/4/5/6/7/8/9)：\n");
+    scanf("%d", &choise);
+
+    if (choise == 1) {
+        return 1;
+    } else if (choise == 2) {
+        return 2;
+    } else if (choise == 3) {
+        return 3;
+    } else if (choise == 4) {
+        return 4;
+    }else if (choise == 5) {
+        return 5;
+    } else if (choise == 6) {
+        return 6;
+    } else if (choise == 7) {
+        return 7;
+    }else if (choise == 8) {
+        return 8;
+    } else if (choise == 9) {
+        return 9;
+    }
+     else {
+        printf("输入错误，请重新输入...");
+        Sleep(3);
+        goto start;
     }
 }
 
+
+
+
 int main() {
     system("chcp 65001");
-    int flag=test();
-    printf("%d ",flag);
+    int end=0;
+    while(end!=1) {
+    int flag = test();
 
-    ScanfCheck(flag);
+        switch (flag) {
+            case 1:
+                ScanfCheck(1);
+                break;
+            case 2:
+                ScanfCheck(2);
+                break;
+            case 3:
+                ScanfCheck(3);
+                break;
+            case 4:
+                ScanfCheck(4);
+                break;
+            case 5:
+                ScanfCheck(5);
+                break;
+            case 6:
+                ScanfCheck(6);
+                break;
+            case 7:
+                jc();
+                break;
+            case 8:
+                ScanfCheck(8);
+                break;
+            case 9:
+                gdbh();
+                break;
+        }
+    }
+//    if (test() == 1) {
+//        ScanfCheck(1);
+//    }
+//    if (test() == 2) {
+//        ScanfCheck(2);
+//    }
+//    if (test() == 3) {
+//        ScanfCheck(3);
+//    }
+    return 0;
+}
+
 
 
 //    //防止控制台输出乱码
@@ -72,6 +130,3 @@ int main() {
 //            Sleep(300);
 //            goto start;
 //
-//        }
-    return 0;
-}

@@ -60,9 +60,7 @@ struct UnsignedBigNum removeSignedBigNumFlag(char x[]) {//移除有符号大整�
     return SBN;
 }
 
-char *sepBigNumDe(char *x) {//输入带符号的实数 输出小数部分
-    struct FloatBigNum FBN;
-    memset(FBN.decimal, 0, sizeof(FBN.decimal));
+void sepBigNumDe(char *x,char *ans) {//输入带符号的实数 输出小数部分
     int j, k, len;
     int i;
     len = strlen(x);
@@ -74,15 +72,13 @@ char *sepBigNumDe(char *x) {//输入带符号的实数 输出小数部分
     //printf("%d %d",i,len);
     j = i;
     for (i = j + 1, k = 0; i < len, k < len - j; ++i, ++k) {
-        FBN.decimal[k] = x[i];
+        ans[k] = x[i];
+        ans[k+1]='\0';
         //printf("%c",FBN.decimal[k]);
     }
-    return FBN.decimal;
 }
 
-char *sepBigNumIn(char *x) {//输入带符号的实数 输出整数部分
-    struct FloatBigNum FBN;
-    memset(FBN.integer, 0, sizeof(FBN));
+void sepBigNumIn(char *x,char *ans) {//输入带符号的实数 输出整数部分
     int j, k, len;
     int i;
     len = strlen(x);
@@ -93,10 +89,10 @@ char *sepBigNumIn(char *x) {//输入带符号的实数 输出整数部分
     }
     j = i;
     for (i = 1, k = 0; i < j, k < j - 1; ++i, ++k) {
-        FBN.integer[k] = x[i];
+        ans[k] = x[i];
+        ans[k+1]='\0';
         //printf("%c", FBN.intager[k]);
     }
-    return FBN.integer;
 }
 
 int judgeOverflow(char num1[], char num2[]) {   //判断是否溢出 数据输入在main里执行
