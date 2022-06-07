@@ -15,6 +15,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="de69cfd0-c8c8-484c-9a14-316690ca4f66" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUI/gui.c" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/gui.c" afterDir="false" />
@@ -29,6 +30,7 @@
       <change beforePath="$PROJECT_DIR$/newCompute/plus.c" beforeDir="false" afterPath="$PROJECT_DIR$/newCompute/plus.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/newCompute/subtraction.c" beforeDir="false" afterPath="$PROJECT_DIR$/newCompute/subtraction.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/newCompute/subtraction.h" beforeDir="false" afterPath="$PROJECT_DIR$/newCompute/subtraction.h" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +42,9 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
+
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -89,18 +93,159 @@
       <created>1654442625849</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1654442625849</updated>
-      <workItem from="1654442628986" duration="1061000" />
-      <workItem from="1654488723119" duration="1600000" />
-      <workItem from="1654531307831" duration="213000" />
-      <workItem from="1654531637611" duration="822000" />
-      <workItem from="1654566642530" duration="11830000" />
+
+      <updated>1652789955032</updated>
+      <workItem from="1652789957330" duration="4751000" />
+      <workItem from="1653281191762" duration="1358000" />
+      <workItem from="1653282573012" duration="2489000" />
+      <workItem from="1653315737882" duration="38000" />
+      <workItem from="1653315940099" duration="2460000" />
+      <workItem from="1653319011041" duration="2351000" />
+      <workItem from="1653352223044" duration="12000" />
+      <workItem from="1653352260914" duration="4129000" />
+      <workItem from="1653368741795" duration="3830000" />
+      <workItem from="1653373926043" duration="2020000" />
+      <workItem from="1653542989901" duration="5598000" />
+      <workItem from="1653565575412" duration="1677000" />
+      <workItem from="1653568127202" duration="3000" />
+      <workItem from="1653611713135" duration="3070000" />
+      <workItem from="1653614824150" duration="1650000" />
+      <workItem from="1653811124526" duration="2035000" />
+      <workItem from="1653826827351" duration="10178000" />
+      <workItem from="1654079816057" duration="1958000" />
+      <workItem from="1654178442689" duration="491000" />
+      <workItem from="1654221287525" duration="3760000" />
+      <workItem from="1654225079027" duration="612000" />
+      <workItem from="1654225703398" duration="3183000" />
+      <workItem from="1654591874444" duration="1000" />
     </task>
+    <task id="LOCAL-00001" summary="initiate GUI">
+      <created>1652790141392</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1652790141392</updated>
+    </task>
+    <task id="LOCAL-00002" summary="initiate GUI">
+      <created>1652790570547</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1652790570547</updated>
+    </task>
+    <task id="LOCAL-00003" summary="initiate GUI">
+      <created>1652790797555</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1652790797555</updated>
+    </task>
+    <task id="LOCAL-00004" summary="initiate GUI">
+      <created>1653281513126</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653281513126</updated>
+    </task>
+    <task id="LOCAL-00005" summary="initiate GUI">
+      <created>1653281528691</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653281528691</updated>
+    </task>
+    <task id="LOCAL-00006" summary="initiate GUI">
+      <created>1653282586371</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1653282586371</updated>
+    </task>
+    <task id="LOCAL-00007" summary="initiate GUI">
+      <created>1653282611146</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1653282611146</updated>
+    </task>
+    <task id="LOCAL-00008" summary="write multiplication.h">
+      <created>1653353767046</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1653353767046</updated>
+    </task>
+    <task id="LOCAL-00009" summary="write multiplication.h">
+      <created>1653356405517</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1653356405517</updated>
+    </task>
+    <task id="LOCAL-00010" summary="write multiplication.h">
+      <created>1653370309071</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1653370309071</updated>
+    </task>
+    <task id="LOCAL-00011" summary="debug multiplication.h">
+      <created>1653544335179</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1653544335179</updated>
+    </task>
+    <task id="LOCAL-00012" summary="refactor project">
+      <created>1653613045465</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1653613045465</updated>
+    </task>
+    <task id="LOCAL-00013" summary="refactor project">
+      <created>1653613632224</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1653613632224</updated>
+    </task>
+    <task id="LOCAL-00014" summary="refactor main.c">
+      <created>1653615926175</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1653615926175</updated>
+    </task>
+    <task id="LOCAL-00015" summary="refactor main.c">
+      <created>1653616266095</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1653616266095</updated>
+    </task>
+    <task id="LOCAL-00016" summary="refactor main.c">
+      <created>1654178649530</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1654178649530</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fix bugs">
+      <created>1654589102827</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1654589102827</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>

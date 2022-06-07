@@ -1,3 +1,4 @@
+
 D:\JetBrains\ToolBox\apps\CLion\ch-0\221.5080.224\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S E:\desktop\High_precision_real_number_library(1)\High_precision_real_number_library -B E:\desktop\High_precision_real_number_library(1)\High_precision_real_number_library\cmake-build-debug
 -- The C compiler identification is GNU 11.2.0
 -- Detecting C compiler ABI info
