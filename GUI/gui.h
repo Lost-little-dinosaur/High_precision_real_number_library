@@ -13,5 +13,7 @@ void Help();
 void About();
 void ScanfCheck(int result);
 void Hide();
+void gdbh();
+void jc();
 
 
