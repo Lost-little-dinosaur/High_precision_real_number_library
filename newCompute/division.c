@@ -8,6 +8,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include "..\Model\struct.h"
+#include <math.h>
 
 
 /*
@@ -21,7 +22,7 @@
  * 之后的三种数据类型的除法调用此基本模型
  */
 
-char division_dividend[10001],division_divisor[10001];   //定义全局变量供下面的程序使用
+char division_dividend[1000001],division_divisor[1000001];   //定义全局变量供下面的程序使用
 char division_arr[1000000],division_ans[1000000];    //ans用于储存计算结果，arr储存余数
 int declen;
 
@@ -191,7 +192,7 @@ char* division_modulo(char a[],char b[])
 }
 
 void division_setpercision(){
-    printf("请设置小数的精度（20~500）：\n");
+    printf("请设置小数的精度（1~500）：\n");
     scanf("%d",&declen);
 }
 
@@ -254,7 +255,7 @@ char* division_divise_dec(char ina[],char inb[])
         if(t[i] != '0')
             break;           //找到t数组中第一个不为0的位置
     }
-    for(j = i;j < lent;j++)
+    for(j = 1;j < lent;j++)
     {
         division_ans[k++] = t[j];
     }
@@ -277,19 +278,38 @@ void division_reset()
     declen = 0;
 }
 
-char* division_combine(char _int[],char _dec[])
+char* division_combine(char _int[],char _dec[],int len)
 {
-    char *all;
     char num[1005];
+    memset(num,0,sizeof(num));
+    int i;
     strcpy(num,_int);
-    for(int i = strlen(_int);i < strlen(_int) + strlen(_dec);i++)
+    for(i = strlen(_int);i < strlen(_int) + strlen(_dec);i++)
     {
         num[i] = _dec[i - strlen(_int)];
     }
-    all = num;
-    return all;
+    while(len > 0)
+    {
+        num[i++] = '0';
+        len--;
+    }
+    //if(num[i - 1] == '0') num[i - 1] = '\0';
+    char* realnum = num;
+    return realnum;
 }
 
+char* division_removezero(char x[])  //消除前导零
+{
+    int len = strlen(x);
+    int pos = 0;
+    for(pos = 0;pos < len;pos++){
+        if(x[pos] != '0')
+        {
+            break;
+        }
+    }
+    return (x + pos);
+}
 
 
 /*
@@ -348,9 +368,24 @@ FloatBigNum DiviseFloatBigNum(FloatBigNum a,FloatBigNum b)
         c.lengthDecimal = 0;
         return c;
     }
-    char stra[1005],strb[1005];
-    strcpy(stra, division_combine(a.integer,a.decimal));
-    strcpy(strb, division_combine(b.integer,b.decimal));
+    if(b.flag == 0)
+    {
+        c.flag = 0;
+        c.lengthDecimal = 0;
+        c.lengthInteger = 0;
+        strcpy(c.integer,"除数不能为0！");
+        strcpy(c.decimal,"");
+        return c;
+    }
+    char stra[1000001],strb[1000001];
+    printf("%d,%d\n",a.lengthDecimal,b.lengthDecimal);
+    int len = a.lengthDecimal > b.lengthDecimal ? a.lengthDecimal : b.lengthDecimal;
+    printf("%d\n",len);
+    strcpy(stra, division_combine(a.integer,a.decimal,len - a.lengthDecimal));
+    strcpy(strb, division_combine(b.integer,b.decimal,len - b.lengthDecimal));
+    strcpy(stra, division_removezero(stra));
+    strcpy(strb, division_removezero(strb));
+    printf("%s %s\n",stra,strb);
     strcpy(c.integer,division_divise_int(stra,strb));
     division_setpercision();
     strcpy(c.decimal, division_divise_dec(stra,strb));
@@ -367,14 +402,16 @@ FloatBigNum DiviseFloatBigNum(FloatBigNum a,FloatBigNum b)
 int main()
 {
     system("chcp 65001");
-
+/*
     UnsignedBigNum a1,b1,c1;
     scanf("%s%s",a1.numBody,b1.numBody);
+    a1.flag = 1;
+    b1.flag = 1;
     c1 = DiviseUnsignedBigNum(a1,b1);
     printf("c1 length = %d\n",c1.length);
     printf("c1 flag = %d\n",c1.flag);
     printf("c1 = %s\n",c1.numBody);
-
+/*
     SignedBigNum a2,b2,c2;
     scanf("%s%s",a2.numBody,b2.numBody);
     a2.flag = -1;
@@ -387,11 +424,16 @@ int main()
     FloatBigNum a3,b3,c3;
     scanf("%s%s%s%s",a3.integer,a3.decimal,b3.integer,b3.decimal);
     a3.flag = 1;
-    b3.flag = 1;
+    b3.flag = 0;
+    a3.lengthDecimal = strlen(a3.decimal);
+    b3.lengthDecimal = strlen(b3.decimal);
     c3 = DiviseFloatBigNum(a3,b3);
-    printf("c3 length = %d\n",c3.lengthInteger + c3.lengthDecimal);
+    printf("%s.%s / %s.%s\n",a3.integer,a3.decimal,b3.integer,b3.decimal);
+    //printf("c3 length = %d\n",c3.lengthInteger + c3.lengthDecimal);
     printf("c3 flag = %d\n",c3.flag);
+    printf("%s\n",c3.integer);
     printf("c3 = %s.%s\n",c3.integer,c3.decimal);
+    printf("%d,%d\n%ld",c3.lengthInteger,c3.lengthDecimal,c3.lengthInteger + c3.lengthDecimal);
     /*
     char a4_int[20],a4_dec[20],b4_int[20],b4_dec[20],a4[40],b4[40];
     scanf("%s%s%s%s",a4_int,a4_dec,b4_int,b4_dec);

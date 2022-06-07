@@ -21,7 +21,7 @@
  * 之后的两种数据类型的取模调用此基本模型
  */
 
-char modulo_dividend[10001], modulo_divisor[10001];   //定义全局变量供下面的程序使用
+char modulo_dividend[1000001], modulo_divisor[1000001];   //定义全局变量供下面的程序使用
 char modulo_arr[1000000], modulo_ans[1000000];    //ans用于储存计算结果，arr储存余数
 int modulo_declen;
 
