@@ -378,14 +378,14 @@ FloatBigNum DiviseFloatBigNum(FloatBigNum a,FloatBigNum b)
         return c;
     }
     char stra[1000001],strb[1000001];
-    printf("%d,%d\n",a.lengthDecimal,b.lengthDecimal);
+    //printf("%d,%d\n",a.lengthDecimal,b.lengthDecimal);
     int len = a.lengthDecimal > b.lengthDecimal ? a.lengthDecimal : b.lengthDecimal;
-    printf("%d\n",len);
+    //printf("%d\n",len);
     strcpy(stra, division_combine(a.integer,a.decimal,len - a.lengthDecimal));
     strcpy(strb, division_combine(b.integer,b.decimal,len - b.lengthDecimal));
     strcpy(stra, division_removezero(stra));
     strcpy(strb, division_removezero(strb));
-    printf("%s %s\n",stra,strb);
+    //printf("%s %s\n",stra,strb);
     strcpy(c.integer,division_divise_int(stra,strb));
     division_setpercision();
     strcpy(c.decimal, division_divise_dec(stra,strb));
