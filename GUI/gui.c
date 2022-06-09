@@ -16,6 +16,7 @@
 #include "../newCompute/module.h"
 #include "../newCompute/multiplication.h"
 #include "../newCompute/misc.h"
+#include "../Utils/Utils.h"
 
 #include<Windows.h>
 
@@ -54,6 +55,7 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
         num1[0] = '+';
     }
 //    printf("已接受输入");
+    printf("\n");
 
     flag = judgeOverflow(num1, num2);
 
@@ -61,31 +63,68 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
     if (flag == -1) {
         printf("稍等片刻\n");
         printf("ERROR!超过数据范围！\n 按任意键返回上级菜单");
-        system("cls");
+        sleep(1);
+        char ch = _getch();
+        return;
     }
 
 //第一种情况：两个数类型不一样
 
     //printf("%d %d",type[0],type[1]);
-    int *plus = judgeType(num1, num2);
+    int plus[2], Type[2] = {0, 0};
+    plus[0] = judgeType(num1, num2)[0];
+    plus[1] = judgeType(num1, num2)[1];
+    if (plus[0] == 3 && plus[1] != 3) {
+        plus[1] = 3;
+        int tmp = strlen(num2);
+        num2[tmp] = '.';
+        num2[tmp + 1] = '0';
+        num2[tmp + 2] = '\0';
+    }
+    if (plus[1] == 3 && plus[0] != 3) {
+        plus[0] = 3;
+        int tmp = strlen(num1);
+        num1[tmp] = '.';
+        num1[tmp + 1] = '0';
+        num1[tmp + 2] = '\0';
+    }
+//    printf("ppppp%d %d\n",plus[0],plus[1]);
+    SignedBigNum SBN;
+    FloatBigNum FBN;
+    Type[0] = plus[0];
+    Type[1] = plus[1];//原始的plus保留在新的数组里
     if (plus[0] != plus[1]) {
 //        GotoXY(0, 0);
-        printf("稍等片刻\n");
+
+        if (plus[0] * plus[1] == 2)//1个1 1个2 untoSigned
+        {
+            SBN = unToSigned(plus, num1, num2);
+            plus[0] = plus[1] = 2;
+        } else if (plus[0] * plus[1] == 3)//1个1 1个3
+        {
+            FBN = unToFloat(plus, num1, num2);
+            plus[0] = plus[1] = 3;
+        } else if (plus[0] * plus[1] == 6)//1个2 1个3
+        {
+            FBN = snToFloat(plus, num1, num2);
+            plus[0] = plus[1] = 3;
+        }
+        /*printf("稍等片刻\n");
 
 
         printf("ERROR!前后数据类型不一致！\n  ");
 
-        printf("\n按任意键返回上级菜单\n");
+        printf("\n\n按任意键返回上级菜单\n");
         sleep(1);
         char ch = _getch();
-        system("cls");
+        system("cls");*/
+    }
 
 
+    //第二种情况，两个数都是无符号数
 
-        //第二种情况，两个数都是无符号数
 
-
-    } else if (plus[0] == 1 && plus[1] == 1) {//无符号
+    if (plus[0] == 1 && plus[1] == 1) {//无符号
         UnsignedBigNum x = UnsignedtoStruct(num1);
         UnsignedBigNum y = UnsignedtoStruct(num2);
         if (result == 1) {
@@ -130,7 +169,7 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
         printf("\n");
 
         printf("%s\n", returnUB.numBody);
-        printf("\n按任意键返回上级菜单\n");
+        printf("\n\n按任意键返回上级菜单\n");
         sleep(1);
         char ch = _getch();
         system("cls");
@@ -142,8 +181,17 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
 
 
     else if (plus[0] == 2 && plus[1] == 2) {//有符号
-        SignedBigNum x = SignedtoStruct(num1);
-        SignedBigNum y = SignedtoStruct(num2);
+        SignedBigNum x, y;
+        if (Type[0] == 2 && Type[1] == 2) {
+            x = SignedtoStruct(num1);
+            y = SignedtoStruct(num2);
+        } else if (Type[0] == 1 && Type[1] == 2) {
+            x = SBN;
+            y = SignedtoStruct(num2);
+        } else if (Type[0] == 2 && Type[1] == 1) {
+            x = SignedtoStruct(num1);
+            y = SBN;
+        }
         x.numBody[x.length] = '\0';
         y.numBody[y.length] = '\0';
         if (result == 1) {
@@ -163,7 +211,8 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
                 returnSB = y;
             }
         } else if (result == 6) {
-            returnSB = multiplySignedBigNum(x, y);
+            int power = atoi(num2);
+            returnSB = exponentiationSignedBigNum(x, power);
         } else if (result == 7) {
             int power = atoi(num2);
             returnSB = exponentiationSignedBigNum(x, power);
@@ -181,7 +230,7 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
         }
         printf("%s", returnSB.numBody);
 
-        printf("\n按任意键返回上级菜单\n");
+        printf("\n\n按任意键返回上级菜单\n");
         sleep(1);
         char ch = _getch();
         system("cls");
@@ -203,8 +252,23 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
             strcpy(num2 + 1, num2);
             num2[0] = '+';
         }
-        FloatBigNum x = FloattoStruct(num1);
-        FloatBigNum y = FloattoStruct(num2);
+        FloatBigNum x, y;
+        if (Type[0] == 3 && Type[1] == 3) {
+            x = FloattoStruct(num1);
+            y = FloattoStruct(num2);
+        } else if (Type[0] == 1 && Type[1] == 3) {
+            x = FBN;
+            y = FloattoStruct(num2);
+        } else if (Type[0] == 3 && Type[1] == 1) {
+            x = FloattoStruct(num1);
+            y = FBN;
+        } else if (Type[0] == 2 && Type[1] == 3) {
+            x = FBN;
+            y = FloattoStruct(num2);
+        } else if (Type[0] == 3 && Type[1] == 2) {
+            x = FloattoStruct(num1);
+            y = FBN;
+        }
 
         if (result == 1) {
             returnFB = plusFloatBigNum(x, y);
@@ -222,19 +286,23 @@ void ScanfCheck(int result) {//第一步：进行检查和输入两个数
             } else {
                 returnFB = y;
             }
-        } else if (result == 7) {
+        }else if (result == 6) {
+            int power = atoi(num2);
+            returnFB = exponentiationFloatBigNum(x, power);
+        }  else if (result == 7) {
             int power = atoi(num2);
             returnFB = exponentiationFloatBigNum(x, power);
         }
 
 
+
+        printf("\n结果为：\n");
         if (returnFB.flag == -1) {
             printf("-");
         }
-        printf("\n结果为：\n");
         printf("%s.%s", returnFB.integer, returnFB.decimal);
 
-        printf("\n按任意键返回上级菜单\n");
+        printf("\n\n按任意键返回上级菜单\n");
         sleep(1);
         char ch = _getch();
         system("cls");
@@ -252,7 +320,7 @@ void gdbh() {
     solveGoldbachConjectureAll(x);
     printf("\n");
 
-    printf("\n按任意键返回上级菜单\n");
+    printf("\n\n按任意键返回上级菜单\n");
     sleep(1);
     char ch = _getch();
     system("cls");
@@ -269,7 +337,7 @@ void jc() {
     UnsignedBigNum x = factorialUnsignedBigNum(factorialNum);
     printf("\n%s\n", x.numBody);
 
-    printf("\n按任意键返回上级菜单\n");
+    printf("\n\n按任意键返回上级菜单\n");
     sleep(1);
     char ch = _getch();
     system("cls");
