@@ -16,4 +16,4 @@ file(GLOB SRC_LIST2 "Utils/*.c")
 file(GLOB SRC_PROTOCOL_LIST2 "Utils/*.h")
 add_library(demo ${SRC_LIST1} ${SRC_PROTOCOL_LIST1} ${SRC_LIST2} ${SRC_PROTOCOL_LIST2} GUI/gui.c newCompute/misc.c newCompute/misc.h)
 
-add_executable(High_precision_real_number_library main.c Utils Model GUI Public newCompute  ${SRC_LIST1} ${SRC_PROTOCOL_LIST1} ${SRC_LIST2} ${SRC_PROTOCOL_LIST2} GUI/gui.c)
+add_executable(High_precision_real_number_library main.c Utils Model GUI newCompute  ${SRC_LIST1} ${SRC_PROTOCOL_LIST1} ${SRC_LIST2} ${SRC_PROTOCOL_LIST2} GUI/gui.c)

@@ -16,6 +16,7 @@ char* cmp_removezero(char x[])  //消除前导零
             break;
         }
     }
+    if(pos == len) pos = len - 1;
     return (x + pos);
 }
 
@@ -54,7 +55,22 @@ int int_compare(char a[],char b[])     //比较字符串的大小
 
 int float_compare(char a[],char b[])
 {
-    return strcmp(a,b);
+    int lena = strlen(a);
+    int lenb = strlen(b);
+    int len = lena > lenb? lenb:lena;
+    for(int i = 0;i < len;i++)
+    {
+        if(a[i] < b[i])
+            return -1;
+        else if(a[i] > b[i])
+            return 1;
+    }
+    if(lena == lenb)
+        return 0;
+    if(lena == len)
+        return -1;
+    else
+        return 1;
 }
 
 int compareUnsignedBigNum(UnsignedBigNum a,UnsignedBigNum b)
