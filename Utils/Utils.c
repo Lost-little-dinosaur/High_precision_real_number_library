@@ -121,7 +121,7 @@ int *judgeType(char x[], char y[]) {  //判断数据类型 如果type[0] type[1]
             break;
         }
     }
-
+    //printf("type=%d %d\n",type[0],type[1]);
     if (type[0] != 3) {
         if (x[0] == '+' || x[0] == '-') {
             type[0] = 2;
