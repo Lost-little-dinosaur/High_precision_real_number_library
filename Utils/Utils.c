@@ -5,7 +5,7 @@
 #include "Utils.h"
 #include "string.h"
 
-#define MAXSIZE 5000
+
 
 #include <stdio.h>
 #include <stdlib.h>
